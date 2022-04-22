@@ -1,1 +1,1 @@
-# MentHa-Care
+# Estrutura da aplicão MentHa-Care
