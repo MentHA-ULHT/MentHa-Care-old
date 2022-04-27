@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarefas</title>
+</head>
+<body>
+    <h1>Lista de tarefas</h1>
+
+    <ul>
+        {% for tarefa in tarefas %}
+            {% if tarefa.prioridade == 1 %}
+                <li> {{tarefa}} 💥 </li>
+            {% else %}
+                <li> {{tarefa}} </li>
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+
+</body>
+</html>

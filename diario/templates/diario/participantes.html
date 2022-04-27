@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+    function listarNotas(participante) {
+        fetch("/listar_notas/1")
+        .then(response => response.text())
+        .then(text => document.querySelector('#content').innerHTML = text);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('button').forEach(button => {
+            button.onclick = function() {
+                listarNotas(this.id);
+            };
+        });
+    });
+    </script>
+</head>
+<body>
+    {% for participante in participantes %}
+        <button id="{{ participante.id }}">{{ participante }}</button>
+    {% endfor %}
+
+    <div id="content"></div>
+</body>
+</html>

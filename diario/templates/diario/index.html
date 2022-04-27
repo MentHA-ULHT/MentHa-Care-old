@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>MentHA</h1>
+
+    <p>Grupos</p>
+    <ul>
+        {% for grupo in grupos %}
+        <li>
+            Nome: {{ grupo }}:
+            <ul>
+                <li>
+                    {% if grupo.dinamizador_set.all.count == 1 %} <!-- dinamizadores = dinamizador_set, se não tiver related_name-->
+                    Dinamizador:
+                    {% else %}
+                    Dinamizadores:
+                    {% endif %}
+                    <ul>
+                        {% for dinamizador in grupo.dinamizadores.all %}
+                        <li>{{ dinamizador }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>
+                    Participantes:
+                    <ul>
+                        <li>
+                        {% for participante in grupo.participante.all %}
+                            {{ participante }}
+                            <ul>
+                                {% for nota in participante.nota_set.all %}
+                                <li>{{nota}}</li>
+                                {% endfor %}
+                                </li>
+                            </ul>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
