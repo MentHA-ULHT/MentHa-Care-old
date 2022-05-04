@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import GrupoCare, GrupoCog, GrupoAvalia, Participante, Nota, Partilha
+from .models import GrupoCare, GrupoCog, GrupoAvalia, Participante, Nota, Partilha,Informacoes,Respostas
 from django.http import HttpResponse
-from .forms import NotaForm, PartilhaForm
+from .forms import NotaForm, PartilhaForm,InformacoesForm,RespostasForm
 
 
 # Create your views here.
@@ -50,6 +50,8 @@ def view_diario_participante(request, id):
         'participante_id': id,
         'notas': Nota.objects.filter(participante=id).order_by('-data'),
         'partilhas': Partilha.objects.filter(participante=id).order_by('-data'),
+        'informacoes': Informacoes.objects.filter(participante=id).order_by('-data'),
+        'respostas': Respostas.objects.filter(participante=id).order_by('-data'),
         'notaForm': NotaForm(),
         'partilhaForm': PartilhaForm()
     }
@@ -61,6 +63,11 @@ def view_diario_grupo(request, idGrupo):
 
     context = {
         'grupo_id': idGrupo,
+        'notas': Nota.objects.all(),
+        'partilhas': Partilha.objects.filter(participante=idGrupo),
+        'informacoes': Informacoes.objects.all(),
+        'respostas': Respostas.objects.filter(participante=idGrupo).order_by('-data'),
+
 
     }
 

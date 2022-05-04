@@ -1,12 +1,40 @@
 <div id="notas">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
 
-     <h1>notas do grupo {{ grupo_id }}</h1>
+     <form id="notaForm" onsubmit='return sendForm({{ grupo_id }}, "notaForm");' method="post">
+        {% csrf_token %}
+        {{ notaForm.nota }}
+        <input type="hidden" name="grupo" value={{ grupo_id }}>
+         <button type="submit"  name="cancel">Cancelar nota</button>
+
+         <button type="submit" name="nota">Guardar nota</button>
+
+    </form>
+    <ul>
+        {% if notas|length > 0 %}
+            {% for nota in notas %}
+                <li>{{ nota }} <span class="data">{{ nota.data }}</span></li>
+            {% endfor %}
+        {% else %}
+            <li>Sem notas</li>
+        {% endif %}
+    </ul>
 
 </div>
 
 <div id="partilhas">
 
      <h1>partilhas do grupo {{ grupo_id }}</h1>
+
+</div>
+
+<div id="respostas">
+
+     <h1>Respostas do grupo {{ grupo_id }}</h1>
+
+</div>
+<div id="informacoes">
+
+     <h1>Informacoes do grupo {{ grupo_id }}</h1>
 
 </div>

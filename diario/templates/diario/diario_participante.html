@@ -5,7 +5,10 @@
         {% csrf_token %}
         {{ notaForm.nota }}
         <input type="hidden" name="participante" value={{ participante_id }}>
-        <button type="submit" name="nota">Guardar nota</button>
+         <button type="submit"  name="cancel">Cancelar nota</button>
+
+         <button type="submit" name="nota">Guardar nota</button>
+
     </form>
     <ul>
         {% if notas|length > 0 %}
@@ -37,5 +40,19 @@
             <li>Sem partilhas</li>
         {% endif %}
     </ul>
+
+</div>
+
+
+<div id="respostas">
+
+     <h1>Respostas do grupo </h1>
+
+</div>
+
+
+<div id="informacoes">
+
+     <h1>Informacoes do grupo </h1>
 
 </div>

@@ -118,6 +118,25 @@ class Partilha(models.Model):
     def __str__(self):
         return f'{self.partilha}'
 
+class Informacoes(models.Model):
+    participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
+    informacoes = models.TextField()
+    data = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return f'{self.partilha}'
+
+
+class Respostas(models.Model):
+    participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
+    respostas = models.TextField()
+    data = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return f'{self.partilha}'
+
+
+
 
 class GrupoAvalia(Grupo):
     avaliador = models.ForeignKey(Avaliador, on_delete=models.CASCADE)

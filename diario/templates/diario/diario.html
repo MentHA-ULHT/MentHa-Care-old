@@ -45,6 +45,14 @@
     grid-area: notas;
     }
 
+    .diario .ver-respostas {
+    grid-area: respostas;
+    }
+
+    .diario .ver-informacoes {
+    grid-area: informacoes;
+    }
+
     .diario .ver-partilhas {
     grid-area: partilhas;
     }
@@ -98,13 +106,15 @@
 
     display: grid;
     grid-template-areas:
-    'notas partilhas'
-    'info  info';
-    grid-template-columns: 1fr 1fr;
+    'notas partilhas respostas informacoes'
+    'info  info info info';
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
 {% endblock %}
 
+
+// Em falta, criar botao de respostas e de informacoes com o seu conteudo
 
 {% block script %}
     <script>
@@ -183,6 +193,8 @@
         }
 
 
+
+
         /***************************************************************************/
         /********** DOMContentLoaded ***********************************************/
         /***************************************************************************/
@@ -194,7 +206,6 @@
             // onclick num participante
             document.querySelectorAll('.participantes button').forEach(botaoParticipante => {
                 botaoParticipante.onclick = () => {
-
                     ativaBotaoParticipante(botaoParticipante.dataset.id);
                     descarregaInfoParticipante(botaoParticipante.dataset.id);
                 }
@@ -271,8 +282,12 @@
 
 
         <div class="diario">
+
+            <button class="menu" data-menu="informacoes">Informações</button>
+            <button class="menu" data-menu="respostas">Respostas</button>
             <button class="menu" data-menu="notas">Notas</button>
             <button class="menu" data-menu="partilhas">Partilhas</button>
+
             <div class="info"></div>
         </div>
     </div>
