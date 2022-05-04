@@ -1,30 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{%  extends 'diario\base.html' %}
 
-    <script>
-    function listarNotas(participante) {
-        fetch("/listar_notas/1")
-        .then(response => response.text())
-        .then(text => document.querySelector('#content').innerHTML = text);
+
+{% block style %}
+    nav a:nth-child(4) {
+        color: black;
+        font-weight: 600;
     }
+{% endblock %}
 
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('button').forEach(button => {
-            button.onclick = function() {
-                listarNotas(this.id);
-            };
-        });
-    });
-    </script>
-</head>
-<body>
-    {% for participante in participantes %}
-        <button id="{{ participante.id }}">{{ participante }}</button>
-    {% endfor %}
 
-    <div id="content"></div>
-</body>
-</html>
+{% block main %}
+
+    <h1>Participantes MentHA</h1>
+
+    <p>Lista de participantes:</p>
+    <ul>
+        {% for participante in participantes %}
+        <li>{{ participante }}
+            <ul>
+                <li>Cuidador:
+                    {% for cuidador in participante.cuidador.all %}
+                        {{ cuidador }}
+                    {% endfor %}
+                </li>
+                <li>
+                    Avaliador: {{ participante.avaliador }}
+                </li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% endblock %}

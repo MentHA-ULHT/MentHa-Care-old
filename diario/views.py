@@ -1,47 +1,68 @@
 from django.shortcuts import render
-from .models import Grupo, Participante, Dinamizador, Nota
-from .forms import NotaForm
+from .models import GrupoCare, GrupoCog, GrupoAvalia, Participante, Nota, Partilha
 from django.http import HttpResponse
+from .forms import NotaForm, PartilhaForm
+
 
 # Create your views here.
+def view_care_grupos(request):
+    contexto = {'grupos': GrupoCare.objects.all()}
+    return render(request, "diario/care_grupos.html", contexto)
 
 
-def index(request):
-    grupos = Grupo.objects.all()
+def view_cog_grupos(request):
+    contexto = {'grupos': GrupoCog.objects.all()}
+    return render(request, "diario/cog_grupos.html", contexto)
 
+
+def view_avalia_grupos(request):
+    contexto = {'grupos': GrupoAvalia.objects.all()}
+    return render(request, "diario/avalia_grupos.html", contexto)
+
+
+def view_participantes(request):
+    contexto = {'grupos': GrupoCog.objects.all(), 'participantes': Participante.objects.all()}
+    return render(request, "diario/participantes.html", contexto)
+
+
+def view_diario(request):
+
+    group_id = 1
     contexto = {
-        'grupos': grupos,
+        'participantes': Participante.objects.filter(grupoCog=group_id),
+        'grupo': GrupoCog.objects.get(id=group_id)
     }
 
-    return render(
-        request,
-        "diario/index.html",
-        contexto
-    )
+    return render(request, "diario/diario.html", contexto)
 
 
-def nova_nota(request):
-    if request.method=='POST':
-        print("\n\nfoi enviado algo\n\n")
-        form = NotaForm(request.POST)
-        if form.is_valid():
-            print("\n\né valido. vai guardar\n\n")
-            form.save()
+def view_diario_participante(request, id):
 
-    form = NotaForm()
-    contexto = {'form': form}
+    form = NotaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
 
-    return render(request, "diario/nova_nota.html",  contexto)
+    form = PartilhaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
 
-def listar_participantes(request):
-    return render(request, "diario/participantes.html", {'participantes': Participante.objects.all()})
+    context = {
+        'participante_id': id,
+        'notas': Nota.objects.filter(participante=id).order_by('-data'),
+        'partilhas': Partilha.objects.filter(participante=id).order_by('-data'),
+        'notaForm': NotaForm(),
+        'partilhaForm': PartilhaForm()
+    }
 
-
-
-def listar_notas(request, id):
-    notas = Nota.objects.filter(participante=id)
-    print(f'\n\n{notas}\n\n')
-    return HttpResponse(f'{str(notas)}')
+    return render(request, "diario/diario_participante.html", context)
 
 
-# necessario defenir o registo autobiografico ???
+def view_diario_grupo(request, idGrupo):
+
+    context = {
+        'grupo_id': idGrupo,
+
+    }
+
+    return render(request, "diario/diario_grupo.html", context)
+

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="db">
+<dataSource name="db [2]">
   <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.20">
     <root id="1">
       <ServerVersion>3.34.0</ServerVersion>
@@ -2140,360 +2140,352 @@ grupocare_id</ColNames>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="672" parent="192" name="data">
-      <Position>4</Position>
-      <DataType>date|0s</DataType>
-    </column>
-    <index id="673" parent="192" name="diario_nota_participante_id_a8deed00">
+    <index id="672" parent="192" name="diario_nota_participante_id_a8deed00">
       <ColNames>participante_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="674" parent="192">
+    <key id="673" parent="192">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="675" parent="192">
+    <foreign-key id="674" parent="192">
       <ColNames>participante_id</ColNames>
       <RefTableName>diario_participante</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="676" parent="193" name="id">
+    <column id="675" parent="193" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="677" parent="193" name="nome">
+    <column id="676" parent="193" name="nome">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="678" parent="193" name="grupoCog_id">
+    <column id="677" parent="193" name="grupoCog_id">
       <Position>3</Position>
       <DataType>bigint|0s</DataType>
     </column>
-    <index id="679" parent="193" name="diario_participante_grupoCog_id_630081aa">
+    <index id="678" parent="193" name="diario_participante_grupoCog_id_630081aa">
       <ColNames>grupoCog_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="680" parent="193">
+    <key id="679" parent="193">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="681" parent="193">
+    <foreign-key id="680" parent="193">
       <ColNames>grupoCog_id</ColNames>
       <RefTableName>diario_grupocog</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="682" parent="194" name="id">
+    <column id="681" parent="194" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="683" parent="194" name="participante_id">
+    <column id="682" parent="194" name="participante_id">
       <Position>2</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="684" parent="194" name="cuidador_id">
+    <column id="683" parent="194" name="cuidador_id">
       <Position>3</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="685" parent="194" name="diario_participante_cuidador_participante_id_cuidador_id_a4c6c0c2_uniq">
+    <index id="684" parent="194" name="diario_participante_cuidador_participante_id_cuidador_id_a4c6c0c2_uniq">
       <ColNames>participante_id
 cuidador_id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="686" parent="194" name="diario_participante_cuidador_participante_id_f34cac52">
+    <index id="685" parent="194" name="diario_participante_cuidador_participante_id_f34cac52">
       <ColNames>participante_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="687" parent="194" name="diario_participante_cuidador_cuidador_id_bde19708">
+    <index id="686" parent="194" name="diario_participante_cuidador_cuidador_id_bde19708">
       <ColNames>cuidador_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="688" parent="194">
+    <key id="687" parent="194">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="689" parent="194">
+    <foreign-key id="688" parent="194">
       <ColNames>participante_id</ColNames>
       <RefTableName>diario_participante</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="690" parent="194">
+    <foreign-key id="689" parent="194">
       <ColNames>cuidador_id</ColNames>
       <RefTableName>diario_cuidador</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="691" parent="195" name="id">
+    <column id="690" parent="195" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="692" parent="195" name="partilha">
+    <column id="691" parent="195" name="partilha">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="693" parent="195" name="participante_id">
+    <column id="692" parent="195" name="participante_id">
       <Position>3</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="694" parent="195" name="data">
-      <Position>4</Position>
-      <DataType>date|0s</DataType>
-    </column>
-    <index id="695" parent="195" name="diario_partilha_participante_id_02efa221">
+    <index id="693" parent="195" name="diario_partilha_participante_id_02efa221">
       <ColNames>participante_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="696" parent="195">
+    <key id="694" parent="195">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="697" parent="195">
+    <foreign-key id="695" parent="195">
       <ColNames>participante_id</ColNames>
       <RefTableName>diario_participante</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="698" parent="196" name="id">
+    <column id="696" parent="196" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="699" parent="196" name="data">
+    <column id="697" parent="196" name="data">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="700" parent="196" name="nome">
+    <column id="698" parent="196" name="nome">
       <Position>3</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="701" parent="196">
+    <key id="699" parent="196">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="702" parent="197" name="id">
+    <column id="700" parent="197" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="703" parent="197" name="action_time">
+    <column id="701" parent="197" name="action_time">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="704" parent="197" name="object_id">
+    <column id="702" parent="197" name="object_id">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="705" parent="197" name="object_repr">
+    <column id="703" parent="197" name="object_repr">
       <Position>4</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="706" parent="197" name="change_message">
+    <column id="704" parent="197" name="change_message">
       <Position>5</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="707" parent="197" name="content_type_id">
+    <column id="705" parent="197" name="content_type_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="708" parent="197" name="user_id">
+    <column id="706" parent="197" name="user_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="709" parent="197" name="action_flag">
+    <column id="707" parent="197" name="action_flag">
       <Position>8</Position>
       <DataType>smallint unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="710" parent="197" name="django_admin_log_content_type_id_c4bce8eb">
+    <index id="708" parent="197" name="django_admin_log_content_type_id_c4bce8eb">
       <ColNames>content_type_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="711" parent="197" name="django_admin_log_user_id_c564eba6">
+    <index id="709" parent="197" name="django_admin_log_user_id_c564eba6">
       <ColNames>user_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="712" parent="197">
+    <key id="710" parent="197">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="713" parent="197">
+    <foreign-key id="711" parent="197">
       <ColNames>content_type_id</ColNames>
       <RefTableName>django_content_type</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="714" parent="197">
+    <foreign-key id="712" parent="197">
       <ColNames>user_id</ColNames>
       <RefTableName>auth_user</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <check id="715" parent="197">
+    <check id="713" parent="197">
       <Predicate>&quot;action_flag&quot; &gt;= 0</Predicate>
     </check>
-    <column id="716" parent="198" name="id">
+    <column id="714" parent="198" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="717" parent="198" name="app_label">
+    <column id="715" parent="198" name="app_label">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="718" parent="198" name="model">
+    <column id="716" parent="198" name="model">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="719" parent="198" name="django_content_type_app_label_model_76bd3d3b_uniq">
+    <index id="717" parent="198" name="django_content_type_app_label_model_76bd3d3b_uniq">
       <ColNames>app_label
 model</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="720" parent="198">
+    <key id="718" parent="198">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="721" parent="199" name="id">
+    <column id="719" parent="199" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="722" parent="199" name="app">
+    <column id="720" parent="199" name="app">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="723" parent="199" name="name">
+    <column id="721" parent="199" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="724" parent="199" name="applied">
+    <column id="722" parent="199" name="applied">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="725" parent="199">
+    <key id="723" parent="199">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="726" parent="200" name="session_key">
+    <column id="724" parent="200" name="session_key">
       <Position>1</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="727" parent="200" name="session_data">
+    <column id="725" parent="200" name="session_data">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="728" parent="200" name="expire_date">
+    <column id="726" parent="200" name="expire_date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="729" parent="200" name="sqlite_autoindex_django_session_1">
+    <index id="727" parent="200" name="sqlite_autoindex_django_session_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>session_key</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="730" parent="200" name="django_session_expire_date_a5c62663">
+    <index id="728" parent="200" name="django_session_expire_date_a5c62663">
       <ColNames>expire_date</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="731" parent="200">
+    <key id="729" parent="200">
       <ColNames>session_key</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_django_session_1</UnderlyingIndexName>
     </key>
-    <column id="732" parent="201" name="type">
+    <column id="730" parent="201" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="733" parent="201" name="name">
+    <column id="731" parent="201" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="734" parent="201" name="tbl_name">
+    <column id="732" parent="201" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="735" parent="201" name="rootpage">
+    <column id="733" parent="201" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="736" parent="201" name="sql">
+    <column id="734" parent="201" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="737" parent="202" name="name">
+    <column id="735" parent="202" name="name">
       <Position>1</Position>
     </column>
-    <column id="738" parent="202" name="seq">
+    <column id="736" parent="202" name="seq">
       <Position>2</Position>
     </column>
-    <column id="739" parent="203" name="id">
+    <column id="737" parent="203" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="740" parent="203" name="titulo">
+    <column id="738" parent="203" name="titulo">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="741" parent="203" name="concluido">
+    <column id="739" parent="203" name="concluido">
       <Position>3</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="742" parent="203" name="data_criacao">
+    <column id="740" parent="203" name="data_criacao">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="743" parent="203" name="prioridade">
+    <column id="741" parent="203" name="prioridade">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="744" parent="203">
+    <key id="742" parent="203">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

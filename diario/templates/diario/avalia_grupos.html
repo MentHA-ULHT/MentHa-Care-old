@@ -1,0 +1,38 @@
+{%  extends 'diario\base.html' %}
+
+
+{% block style %}
+    nav a:nth-child(3) {
+        color: black;
+        font-weight: 600;
+    }
+{% endblock %}
+
+
+
+{% block main %}
+
+    <h1>Protocolo MentHA</h1>
+
+    <p>Grupos</p>
+    <ul>
+        {% for grupo in grupos %}
+        <li>
+            Nome: {{ grupo }}:
+            <ul>
+                <li>Avaliador: {{ grupo.avaliador }}</li>
+                <li>Participante: {{ grupo.participante }}</li>
+                <li>Cuidador:
+                    <ul>
+                        {% for cuidador in grupo.participante.cuidador.all %}
+                            <li>{{ cuidador }}</li>
+                        {% endfor %}
+
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

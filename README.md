@@ -1,32 +1,73 @@
+# App diario-de-bordo
+
+A aplicação é a diario:
+* back-end em django seguindo arquitetura MVC
+* integra pedidos assincronos AJAX, usando `fetch(pedido).then(resposta => fag_algo(resposta));`:
+    * o cliente faz, num (`fetch()`) o pedido de um recurso ao servidor
+    * quando é recebida a resposta, então (`then()`) é feito algo com essa resposta
 
 
-Projeto MentHA- CARE
+# Video explicativo da App
 
-Deployment da aplicação:
+[![explicacao](https://user-images.githubusercontent.com/42048382/164761509-d87071c9-37d4-48bd-8624-d95d360e8946.png)](https://youtu.be/kPJp3N2976I)
 
-Para o protótipo correr é necessário ter o python instalado no sistema e ter o pycharm ou o visual studio.
 
-Passos a seguir:
+# Por fazer
 
-<<<<<<< HEAD
-Abrir o ficheiro com o programa.
-Correr o comando "py manage.py runserver" no terminal
-Abrir localhost no browser 
-no link dado insira /admin no final
-Use as credências user"utilizador" e palavra-passe:"123" para efetuar login
-Pode navegar para visualizar as opções
+### Credenciais
+* [@login_required](https://docs.djangoproject.com/en/4.0/topics/auth/default/)
 
-O prototipo encontra-se em fase de desenvolvimento, deste modo ainda se encontra muito incompleto
-=======
-    Abrir o ficheiro com o programa.
-    Correr o comando "py manage.py runserver" no terminal
-    Abrir localhost no browser 
-    no link dado insira /admin no final
-    Use as credências user"joao" e palavra-passe:"joao" para efetuar login
-    Pode navegar para visualizar as opções
-  
-  O prototipo encontra-se em fase de desenvolvimento, deste modo ainda se encontra muito incompleto
+### Segurança contra malware
 
->>>>>>> ec5dd51f06b6f7770febcc63eea7516c61c1d20e
+* incluir CSRF token nos fetch (ver detalhes [aqui](https://docs.djangoproject.com/en/4.0/ref/csrf/#ajax) para garantir que não há riscos
+    * usar o [@csrf_protect](https://docs.djangoproject.com/en/4.0/ref/csrf/#module-django.views.decorators.csrf) antes de cada view que queremos protegida
+    * usar ensure_csrf_cookie() na view para garantir q insere cookie.
 
-Link do video da apresentação do Prototipo desenvolvido em axure: https://youtu.be/hP_a9h67YVc
+```js
+ function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+
+// E depois usa-se nos fetch assim: 
+
+const request = new Request(
+    /* URL */,
+    {
+        method: 'POST',
+        headers: {'X-CSRFToken': csrftoken},
+        mode: 'same-origin' // Do not send CSRF token to another domain.
+    }
+);
+fetch(request).then(function(response) {
+    // ...
+});
+
+// outro exemplo:
+
+fetch(url, {
+    credentials: 'include',
+    method: 'POST',
+    mode: 'same-origin',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken
+    },
+    body: {}
+   })
+  }
+  ```

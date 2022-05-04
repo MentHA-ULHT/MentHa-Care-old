@@ -1,0 +1,45 @@
+{%  extends 'diario\base.html' %}
+
+{% block style %}
+    nav a:nth-child(2) {
+        color: black;
+        font-weight: 600;
+    }
+{% endblock %}
+
+{% block main %}
+
+    <h1>MentHA Cog</h1>
+
+    <p>Grupos</p>
+    <ul>
+        {% for grupo in grupos %}
+        <li>
+            Nome: {{ grupo }}:
+            <ul>
+                <li>
+                    {% if grupo.facilitadores.all.count == 1 %}
+                    Dinamizador:
+                    {% else %}
+                    Dinamizadores:
+                    {% endif %}
+                    <ul>
+                        {% for facilitador in grupo.facilitadores.all %}
+                        <li>{{ facilitador }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>
+                    Participantes:
+                    <ul>
+                        {% for participante in grupo.participantes.all %}
+                        <li> {{ participante }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% endblock %}

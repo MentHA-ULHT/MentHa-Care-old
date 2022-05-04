@@ -1,9 +1,18 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Participante, Grupo, Dinamizador,Nota
+from .models import *
+
+admin.site.register(GrupoCare)
+admin.site.register(Mentor)
+admin.site.register(Cuidador)
+
+admin.site.register(GrupoCog)
+admin.site.register(GrupoAvalia)
+
+admin.site.register(Facilitador)
+admin.site.register(Avaliador)
 
 admin.site.register(Participante)
-admin.site.register(Grupo)
-admin.site.register(Dinamizador)
 admin.site.register(Nota)
+admin.site.register(Partilha)

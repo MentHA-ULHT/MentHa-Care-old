@@ -18,4 +18,3 @@ def nova_tarefa(request):
     context = {'form': form}
 
     return render(request, 'tarefas/nova.html', context)
-
