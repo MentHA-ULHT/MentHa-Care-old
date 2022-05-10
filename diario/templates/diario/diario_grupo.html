@@ -13,6 +13,7 @@
     <ul>
         {% if notas|length > 0 %}
             {% for nota in notas %}
+                <li> {{ nota.participante }} </li>
                 <li>{{ nota }} <span class="data">{{ nota.data }}</span></li>
             {% endfor %}
         {% else %}

@@ -1,22 +1,37 @@
+<!--<script>-->
+<!--    document.querySelectorAll('div#informacoes div.titulo').forEach(d=>{-->
+
+<!--      d.onclick= () => {-->
+<!--        if(d.nextElementSibling.style.display=='block'){-->
+<!--          d.nextElementSibling.style.display='none'-->
+<!--        }-->
+<!--        else{-->
+<!--           d.nextElementSibling.style.display='block';-->
+
+<!--        }-->
+<!--      };-->
+<!--    });-->
+<!--</script>-->
+
 <div id="notas">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
 
-     <form id="notaForm" onsubmit='return sendForm({{ participante_id }}, "notaForm");' method="post">
+    <form id="notaForm" onsubmit='return sendForm({{ participante_id }}, "notaForm");' method="post">
         {% csrf_token %}
         {{ notaForm.nota }}
         <input type="hidden" name="participante" value={{ participante_id }}>
-         <button type="submit"  name="cancel">Cancelar nota</button>
+        <button type="submit" name="cancel">Cancelar nota</button>
 
-         <button type="submit" name="nota">Guardar nota</button>
+        <button type="submit" name="nota">Guardar nota</button>
 
     </form>
     <ul>
         {% if notas|length > 0 %}
-            {% for nota in notas %}
-                <li>{{ nota }} <span class="data">{{ nota.data }}</span></li>
-            {% endfor %}
+        {% for nota in notas %}
+        <li>{{ nota }} <span class="data">{{ nota.data }}</span></li>
+        {% endfor %}
         {% else %}
-            <li>Sem notas</li>
+        <li>Sem notas</li>
         {% endif %}
     </ul>
 
@@ -24,35 +39,61 @@
 
 <div id="partilhas">
 
-     <form id="partilhaForm" onsubmit='return sendForm({{ participante_id }}, "partilhaForm");' method="post">
+
+    <form id="partilhaForm" onsubmit='return sendForm({{ participante_id }}, "partilhaForm");' method="post">
         {% csrf_token %}
-         {{ partilhaForm.partilha }}
+        {{ partilhaForm.partilha }}
         <input type="hidden" name="participante" value={{ participante_id }}>
         <button type="submit" name="partilha">Guardar partilha</button>
     </form>
 
     <ul>
         {% if partilhas|length > 0 %}
-            {% for partilha in partilhas %}
-                <li>{{ partilha }} <span class="data">{{ partilha.data }}</span></li>
-            {% endfor %}
+        {% for partilha in partilhas %}
+        <li>{{ partilha }} <span class="data">{{ partilha.data }}</span></li>
+        {% endfor %}
         {% else %}
-            <li>Sem partilhas</li>
+        <li>Sem partilhas</li>
         {% endif %}
     </ul>
 
 </div>
 
-
 <div id="respostas">
 
-     <h1>Respostas do grupo </h1>
+    <h1>Respostas do Participantes </h1>
 
 </div>
 
 
 <div id="informacoes">
 
-     <h1>Informacoes do grupo </h1>
+    <div class="titulo">
+        <details onclose="">
+            <summary>Identificação</summary>
+            <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
+                pavilions, award-winning fireworks and seasonal special events.</p>
+
+        </details>
+    </div>
+
+
+    <div class="titulo">
+        <details onclose="">
+            <summary>Registo Autobiografico</summary>
+            <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
+                pavilions, award-winning fireworks and seasonal special events.</p>
+        </details>
+    </div>
+
+
+    <div class="titulo">
+        <details onclose="">
+            <summary>Relatorios de Avaliação</summary>
+            <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
+                pavilions, award-winning fireworks and seasonal special events.</p>
+        </details>
+    </div>
+
 
 </div>
