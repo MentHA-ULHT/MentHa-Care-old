@@ -113,17 +113,51 @@
 
     <!-- Inicio diarioParticpante.html-->
 
-    div#informacoes div{
-      padding:10px;
-      margin:1px;
-    }
-    div#informacoes div:nth-child(n){
-      z-index=2;
-      background: khaki;
-      margin:8px;
 
-    }
-    d
+div.detail-info-container > * {
+  padding:10px;
+  margin:5px;
+}
+.detail-info-container{
+  position:relative;
+}
+#informacoes{
+    display: flex;
+    flex-direction:column;
+    gap: 2em;
+
+}
+#informacoes > div {
+    background-color:#47B5C4;
+    padding:2em;
+    border-radius:1em;
+
+}
+.infos{
+  background-color: whitesmoke;
+  display:none;
+  position: absolute;
+  z-index:2;
+  width:calc(100% - 10px);
+  top: calc(100%);
+  left:0px;
+  padding:10px 10px 10px 10px;
+}
+.titulo{
+  background-color: transparent;
+  border:0.01em;
+  border-radius:5px;
+  border-style:solid;
+  border-color: #47B5C4;
+}
+
+.selectedButton{
+
+}
+.ignoredButton{
+  display
+}
+
     <!-- Fim diarioParticpante.html-->
 
 
@@ -209,6 +243,28 @@
                 .then(() => ativaMenu());
         }
 
+        document.querySelectorAll('div.titulo').forEach(d=>{
+
+  d.onclick= () => {
+    if(d.nextElementSibling.style.display=='block'){
+      d.nextElementSibling.style.display='none'
+    }
+    else{
+       d.nextElementSibling.style.display='block';
+
+    }
+  };
+});
+
+        function showContent(element){
+          element.style.display = "block";
+          document.querySelector("#" + element.id + " > .infos").style.display="block"
+          console.log(element.id);
+        }
+
+        function hideContent(element){
+          document.querySelector("#" + element.id + " > .infos").style.display="none"
+        }
 
 
 

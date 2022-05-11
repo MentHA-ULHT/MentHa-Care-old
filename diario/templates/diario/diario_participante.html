@@ -1,17 +1,17 @@
-<!--<script>-->
-<!--    document.querySelectorAll('div#informacoes div.titulo').forEach(d=>{-->
+<script>
+    document.querySelectorAll('div.detail-info-container').forEach(d=>{
 
-<!--      d.onclick= () => {-->
-<!--        if(d.nextElementSibling.style.display=='block'){-->
-<!--          d.nextElementSibling.style.display='none'-->
-<!--        }-->
-<!--        else{-->
-<!--           d.nextElementSibling.style.display='block';-->
+      d.onclick= () => {
+        if(d.nextElementSibling.style.display=='block'){
+          d.nextElementSibling.style.display='none'
+        }
+        else{
+           d.nextElementSibling.style.display='block';
 
-<!--        }-->
-<!--      };-->
-<!--    });-->
-<!--</script>-->
+        }
+      };
+    });
+</script>
 
 <div id="notas">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
@@ -68,31 +68,36 @@
 
 <div id="informacoes">
 
-    <div class="titulo">
-        <details onclose="">
-            <summary>Identificação</summary>
-            <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
-                pavilions, award-winning fireworks and seasonal special events.</p>
-
-        </details>
+    <div class="detail-info-container" id="information-container" onmouseover="showContent(this)"
+         onmouseout="hideContent(this)">
+        <div class="titulo">Informação</div>
+        <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+        </div>
     </div>
 
-
-    <div class="titulo">
-        <details onclose="">
-            <summary>Registo Autobiografico</summary>
-            <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
-                pavilions, award-winning fireworks and seasonal special events.</p>
-        </details>
+    <div class="detail-info-container" id="materials-container" onmouseover="showContent(this)"
+         onmouseout="hideContent(this)">
+        <div class="titulo">Materiais</div>
+        <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+        </div>
     </div>
 
-
-    <div class="titulo">
-        <details onclose="">
-            <summary>Relatorios de Avaliação</summary>
-            <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international
-                pavilions, award-winning fireworks and seasonal special events.</p>
-        </details>
+    <div class="detail-info-container" id="observations-container"  >
+        <div class="titulo">Observações</div>
+        <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+        </div>
     </div>
 
 
