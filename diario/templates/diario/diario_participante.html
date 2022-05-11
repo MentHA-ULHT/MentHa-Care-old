@@ -1,17 +1,14 @@
-<script>
-    document.querySelectorAll('div.detail-info-container').forEach(d=>{
-
-      d.onclick= () => {
-        if(d.nextElementSibling.style.display=='block'){
-          d.nextElementSibling.style.display='none'
-        }
-        else{
-           d.nextElementSibling.style.display='block';
-
-        }
-      };
-    });
-</script>
+<!--<script>-->
+<!--   -->
+<!--  function myFunction() {-->
+<!--  var x = document.getElementById("observations-container");-->
+<!--  if (x.style.display === "none") {-->
+<!--    x.style.display = "block";-->
+<!--  } else {-->
+<!--    x.style.display = "none";-->
+<!--  }-->
+<!--}-->
+<!--</script>-->
 
 <div id="notas">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
@@ -68,8 +65,7 @@
 
 <div id="informacoes">
 
-    <div class="detail-info-container" id="information-container" onmouseover="showContent(this)"
-         onmouseout="hideContent(this)">
+    <div class="detail-info-container" id="information-container"  onclick="myFunction()">
         <div class="titulo">Informação</div>
         <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -79,8 +75,7 @@
         </div>
     </div>
 
-    <div class="detail-info-container" id="materials-container" onmouseover="showContent(this)"
-         onmouseout="hideContent(this)">
+    <div class="detail-info-container" id="materials-container"  onclick="myFunction()">
         <div class="titulo">Materiais</div>
         <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -90,7 +85,7 @@
         </div>
     </div>
 
-    <div class="detail-info-container" id="observations-container"  >
+    <div class="detail-info-container" id="observations-container"  onclick="myFunction()">
         <div class="titulo">Observações</div>
         <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

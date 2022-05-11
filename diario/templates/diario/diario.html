@@ -243,18 +243,22 @@ div.detail-info-container > * {
                 .then(() => ativaMenu());
         }
 
-        document.querySelectorAll('div.titulo').forEach(d=>{
 
-  d.onclick= () => {
-    if(d.nextElementSibling.style.display=='block'){
-      d.nextElementSibling.style.display='none'
-    }
-    else{
-       d.nextElementSibling.style.display='block';
 
-    }
-  };
-});
+        function myFunction() {
+          document.querySelectorAll('div.titulo').forEach(d=>{
+
+      d.onclick= () => {
+        if(d.nextElementSibling.style.display=='block'){
+          d.nextElementSibling.style.display='none'
+        }
+        else{
+           d.nextElementSibling.style.display='block';
+
+        }
+      };
+    });
+        }
 
         function showContent(element){
           element.style.display = "block";
