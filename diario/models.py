@@ -110,6 +110,7 @@ class Nota(models.Model):
         return f'{self.nota}'
 
 
+
 class Partilha(models.Model):
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
     partilha = models.TextField()
@@ -133,7 +134,7 @@ class Respostas(models.Model):
     data = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f'{self.partilha}'
+        return f'{self.respostas}'
 
 
 

@@ -179,6 +179,15 @@ div.detail-info-container > * {
                 button.style.color = 'black';
                 button.style.font_weight = '600';
             });
+
+              //mostra botao respostas
+            let buttonAnswer = document.querySelector('[data-menu="respostas"]');
+            buttonAnswer.style.display='block';
+
+            //esconde botao presencas
+            let buttonPresences = document.querySelector('[data-menu="presencas"]');
+            buttonPresences.style.display='none';
+
             // desativa o botao do grupo
             document.querySelectorAll('.grupo button').forEach(button => {
                 button.style.backgroundColor = 'whitesmoke';
@@ -203,11 +212,22 @@ div.detail-info-container > * {
 
             });
 
+
+
             // obtém e ativa o botão do grupo
             let buttonAtivo = document.querySelector(`[data-idGrupo="${idGrupo}"]`);
             buttonAtivo.style.backgroundColor = 'purple';
             buttonAtivo.style.color = 'white';
             buttonAtivo.style.font_weight = '600';
+
+            let buttonPresences = document.querySelector('[data-menu="presencas"]');
+            buttonPresences.style.display='block';
+
+             //esconde botao respostas
+            let buttonAnswer = document.querySelector('[data-menu="respostas"]');
+            buttonAnswer.style.display='none';
+
+
         }
         //Fim grupo
 
@@ -349,9 +369,11 @@ div.detail-info-container > * {
         <div class="diario">
 
             <button class="menu" data-menu="informacoes">Informações</button>
+            <button class="menu" data-menu="presencas">Presenças</button>
             <button class="menu" data-menu="respostas">Respostas</button>
             <button class="menu" data-menu="notas">Notas</button>
             <button class="menu" data-menu="partilhas">Partilhas</button>
+
 
             <div class="info"></div>
         </div>
