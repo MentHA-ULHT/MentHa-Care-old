@@ -128,8 +128,7 @@ div.detail-info-container > * {
 
 }
 #informacoes > div {
-    background-color:#47B5C4;
-    padding:2em;
+    padding:0.5em;
     border-radius:1em;
 
 }
@@ -145,8 +144,9 @@ div.detail-info-container > * {
 }
 .titulo{
   background-color: transparent;
-  border:0.01em;
+  border:0.08em;
   border-radius:5px;
+  padding:0.5em;
   border-style:solid;
   border-color: #47B5C4;
 }
@@ -259,18 +259,6 @@ div.detail-info-container > * {
       };
     });
         }
-
-        function showContent(element){
-          element.style.display = "block";
-          document.querySelector("#" + element.id + " > .infos").style.display="block"
-          console.log(element.id);
-        }
-
-        function hideContent(element){
-          document.querySelector("#" + element.id + " > .infos").style.display="none"
-        }
-
-
 
         /***************************************************************************/
         /********** DOMContentLoaded ***********************************************/
