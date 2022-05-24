@@ -98,9 +98,6 @@ class Participante(Utilizador):
     def __str__(self):
         return f'{self.nome}'
 #criar class para o grupo e ir buscar a class participante da ines
-#
-
-
 
 class Nota(models.Model):
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
@@ -152,7 +149,7 @@ class GrupoAvalia(Grupo):
 # Criacao da class para o grupo
 
 class NotaGrupo(models.Model):
-    grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE)
+    grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
     nota = models.TextField()
     data = models.DateTimeField(auto_now_add=True, null=True)
     # podemos ter alternativamente dois campos: criado, modificado sendo o segundo atualizado se modificada a nota
@@ -162,17 +159,26 @@ class NotaGrupo(models.Model):
         return f'{self.nota}'
 
 class PartilhaGrupo(models.Model):
-    grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE)
+    grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
     partilha = models.TextField()
     data = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return f'{self.partilha}'
 
-class Presencas(models.Model):
-    participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
-    partilha = models.TextField()
-    data = models.DateTimeField(auto_now_add=True, null=True)
 
-    def __str__(self):
-        return f'{self.partilha}'
+class MODE(models.TextChoices):
+    PRESENT = 'L', "Presencial"
+    ONLINE = 'O', "Online"
+
+
+class Presenca(models.Model):
+    participante = models.ForeignKey(Participante, on_delete=models.CASCADE, null=True, blank=True,
+                                      related_name='presencas')
+    sessao = models.ForeignKey(Sessao, on_delete=models.CASCADE, null=True, blank=True, related_name='sessao')
+    # info a recolher no formulário, com checkboxes
+    present = models.BooleanField()
+    mode = models.CharField(choices=MODE.choices, null=True, blank=True)
+    withApp = models.BooleanField(null=True, blank=True)
+
+
