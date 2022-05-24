@@ -97,6 +97,9 @@ class Participante(Utilizador):
     cuidador = models.ManyToManyField(Cuidador, default="", blank=True, related_name='cuidadores')
     def __str__(self):
         return f'{self.nome}'
+#criar class para o grupo e ir buscar a class participante da ines
+#
+
 
 
 class Nota(models.Model):
@@ -108,7 +111,6 @@ class Nota(models.Model):
 
     def __str__(self):
         return f'{self.nota}'
-
 
 
 class Partilha(models.Model):
@@ -144,3 +146,33 @@ class GrupoAvalia(Grupo):
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.nome}'
+
+
+
+# Criacao da class para o grupo
+
+class NotaGrupo(models.Model):
+    grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE)
+    nota = models.TextField()
+    data = models.DateTimeField(auto_now_add=True, null=True)
+    # podemos ter alternativamente dois campos: criado, modificado sendo o segundo atualizado se modificada a nota
+    # https://stackoverflow.com/questions/1737017/django-auto-now-and-auto-now-add
+
+    def __str__(self):
+        return f'{self.nota}'
+
+class PartilhaGrupo(models.Model):
+    grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE)
+    partilha = models.TextField()
+    data = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return f'{self.partilha}'
+
+class Presencas(models.Model):
+    participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
+    partilha = models.TextField()
+    data = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return f'{self.partilha}'

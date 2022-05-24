@@ -1,6 +1,12 @@
 <div id="notas">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
 
+    <h2><b>Nova nota:</b></h2>
+    <input type="checkbox" id="vehicle" name="escolha" value="atividadde">
+    <label for="vehicle1">Atividade</label>
+    <input type="checkbox" id="vehicle1" name="escolha" value="geral">
+    <label for="vehicle1">Geral</label>
+
      <form id="notaForm" onsubmit='return sendForm({{ grupo_id }}, "notaForm");' method="post">
         {% csrf_token %}
         {{ notaForm.nota }}
@@ -10,16 +16,19 @@
          <button type="submit" name="nota">Guardar nota</button>
 
     </form>
-    <ul>
-        {% if notas|length > 0 %}
-            {% for nota in notas %}
-                <li> {{ nota.participante }} </li>
-                <li>{{ nota }} <span class="data">{{ nota.data }}</span></li>
-            {% endfor %}
-        {% else %}
-            <li>Sem notas</li>
-        {% endif %}
-    </ul>
+    <hr>
+    <h2><b>Lista das notas</b></h2>
+<!--    <ul>-->
+<!--        {% if notas|length > 0 %}-->
+<!--            {% for nota in notas %}-->
+<!--                <li> {{ nota.participante }} </li>-->
+<!--                <li>{{ nota }} <span class="data">{{ nota.data }}</span></li>-->
+<!--            {% endfor %}-->
+<!--        {% else %}-->
+<!--            <li>Sem notas</li>-->
+<!--        {% endif %}-->
+<!--    </ul>-->
+
 
 </div>
 
@@ -34,14 +43,43 @@
      <h1>Presencas do grupo {{ grupo_id }}</h1>
 
 </div>
+
 <div id="respostas">
 
      <h1>Respostas do grupo {{ grupo_id }}</h1>
 
 
 </div>
+
 <div id="informacoes">
 
-     <h1>Informacoes do grupo {{ grupo_id }}</h1>
+     <div class="detail-info-container" id="information-container"  onclick="myFunction()">
+        <div class="titulo">Info</div>
+        <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+        </div>
+    </div>
 
+    <div class="detail-info-container" id="materials-container"  onclick="myFunction()">
+        <div class="titulo">Info</div>
+        <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+        </div>
+    </div>
+
+    <div class="detail-info-container" id="observations-container"  onclick="myFunction()">
+        <div class="titulo">Info</div>
+        <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+        </div>
+    </div>
 </div>

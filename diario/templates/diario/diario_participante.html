@@ -1,17 +1,11 @@
-<!--<script>-->
-<!--   -->
-<!--  function myFunction() {-->
-<!--  var x = document.getElementById("observations-container");-->
-<!--  if (x.style.display === "none") {-->
-<!--    x.style.display = "block";-->
-<!--  } else {-->
-<!--    x.style.display = "none";-->
-<!--  }-->
-<!--}-->
-<!--</script>-->
-
-<div id="notas">
+<div id="notas" style="overflow: auto;">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
+<!--    Escolha a opcao-->
+    <h2><b>Nova nota:</b></h2>
+    <input type="checkbox" id="vehicle" name="escolha" value="atividadde">
+    <label for="vehicle1">Atividade</label>
+    <input type="checkbox" id="vehicle1" name="escolha" value="geral">
+    <label for="vehicle1">Geral</label>
 
     <form id="notaForm" onsubmit='return sendForm({{ participante_id }}, "notaForm");' method="post">
         {% csrf_token %}
@@ -21,6 +15,9 @@
         <button type="submit" name="nota">Guardar nota</button>
 
     </form>
+
+    <hr>
+    <h2><b>Lista das notas</b></h2>
     <ul>
         {% if notas|length > 0 %}
         {% for nota in notas %}
@@ -30,6 +27,7 @@
         <li>Sem notas</li>
         {% endif %}
     </ul>
+
 
 </div>
 
@@ -58,14 +56,22 @@
 <div id="respostas">
 
     <h1>Respostas do Participantes </h1>
+    <ul>
+        {% if respostas|length > 0 %}
+        {% for no in respostas %}
+        <li>{{ no }} </li>
+        {% endfor %}
+        {% else %}
+        <li>Sem respostas</li>
+        {% endif %}
+    </ul>
 
 </div>
-
 
 <div id="informacoes">
 
     <div class="detail-info-container" id="information-container"  onclick="myFunction()">
-        <div class="titulo">Informação</div>
+        <div class="titulo"> Informação</div>
         <div class="infos">
             <ul>
                 {% if informacoes|length > 0 %}

@@ -67,7 +67,8 @@ def view_diario_grupo(request, idGrupo):
         'partilhas': Partilha.objects.filter(participante=idGrupo),
         'informacoes': Informacoes.objects.all(),
         'respostas': Respostas.objects.filter(participante=idGrupo).order_by('-data'),
-
+        'notaForm': NotaForm(),
+        'partilhaForm': PartilhaForm()
 
     }
 
