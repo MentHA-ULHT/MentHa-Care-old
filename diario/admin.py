@@ -18,3 +18,9 @@ admin.site.register(Nota)
 admin.site.register(Partilha)
 admin.site.register(Informacoes)
 admin.site.register(Respostas)
+# Registar dados sobre um grupo
+
+admin.site.register(NotaGrupo)
+admin.site.register(PartilhaGrupo)
+admin.site.register(MODE)
+admin.site.register(Presenca)

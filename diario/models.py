@@ -178,7 +178,7 @@ class Presenca(models.Model):
     sessao = models.ForeignKey(Sessao, on_delete=models.CASCADE, null=True, blank=True, related_name='sessao')
     # info a recolher no formulário, com checkboxes
     present = models.BooleanField()
-    mode = models.CharField(choices=MODE.choices, null=True, blank=True)
+    mode = models.CharField(max_length=20,choices=MODE.choices, null=True, blank=True,)
     withApp = models.BooleanField(null=True, blank=True)
 
 

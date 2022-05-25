@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import GrupoCare, GrupoCog, GrupoAvalia, Participante, Nota, Partilha,Informacoes,Respostas
+from .models import GrupoCare, GrupoCog, GrupoAvalia, Participante, Nota, Partilha,Informacoes,PartilhaGrupo,Respostas,Presenca,MODE
 from django.http import HttpResponse
-from .forms import NotaForm, PartilhaForm,InformacoesForm,RespostasForm
+from .forms import NotaForm, PartilhaForm,InformacoesForm,RespostasForm,PartilhaGrupoForm,MODEForm,PresencaForm,NotaGrupoForm
 
 
 # Create your views here.
