@@ -17,17 +17,17 @@
 
     </form>
     <hr>
-    <h2><b>Lista das notas</b></h2>
-<!--    <ul>-->
-<!--        {% if notas|length > 0 %}-->
-<!--            {% for nota in notas %}-->
-<!--                <li> {{ nota.participante }} </li>-->
-<!--                <li>{{ nota }} <span class="data">{{ nota.data }}</span></li>-->
-<!--            {% endfor %}-->
-<!--        {% else %}-->
-<!--            <li>Sem notas</li>-->
-<!--        {% endif %}-->
-<!--    </ul>-->
+    <h2><b>Lista das notas de grupo  {{grupo_id}}</b></h2>
+    <ul>
+        {% if notaG|length > 0 %}
+            {% for nota in notaG %}
+                <li> {{ nota.grupo }} </li>
+                <li>{{ nota }} </li>
+            {% endfor %}
+        {% else %}
+            <li>Sem notas</li>
+        {% endif %}
+    </ul>
 
 
 </div>

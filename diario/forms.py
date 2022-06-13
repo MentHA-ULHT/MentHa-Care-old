@@ -1,5 +1,5 @@
 from django.forms import ModelForm, TextInput, Textarea
-from .models import Nota, Partilha,Informacoes,Respostas
+from .models import Nota, Partilha,Informacoes,Respostas,NotaGrupo,PartilhaGrupo,Presenca
 
 
 class NotaForm(ModelForm):
@@ -52,13 +52,13 @@ class PartilhaGrupoForm(ModelForm):
             'PartilhaGrupo': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma partilha sobre o grupo...'}),
         }
 
-class MODEForm(ModelForm):
-    class Meta:
-        model = MODE
-        fields = '__all__'
-        widgets = {
-            'MODE': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva um modo...'}),
-        }
+# class ModeForm(ModelForm):
+#     class Meta:
+#         model = Mode
+#         fields = '__all__'
+#         widgets = {
+#             'MODE': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva um modo...'}),
+#         }
 
 class PresencaForm(ModelForm):
     class Meta:

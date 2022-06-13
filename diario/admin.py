@@ -22,5 +22,4 @@ admin.site.register(Respostas)
 
 admin.site.register(NotaGrupo)
 admin.site.register(PartilhaGrupo)
-admin.site.register(MODE)
 admin.site.register(Presenca)

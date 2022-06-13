@@ -149,14 +149,14 @@ class GrupoAvalia(Grupo):
 # Criacao da class para o grupo
 
 class NotaGrupo(models.Model):
-    grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
-    nota = models.TextField()
+    grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE, null=True, blank=True)
+    notaG = models.TextField()
     data = models.DateTimeField(auto_now_add=True, null=True)
     # podemos ter alternativamente dois campos: criado, modificado sendo o segundo atualizado se modificada a nota
     # https://stackoverflow.com/questions/1737017/django-auto-now-and-auto-now-add
 
     def __str__(self):
-        return f'{self.nota}'
+        return f'{self.notaG}'
 
 class PartilhaGrupo(models.Model):
     grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
@@ -167,18 +167,36 @@ class PartilhaGrupo(models.Model):
         return f'{self.partilha}'
 
 
-class MODE(models.TextChoices):
-    PRESENT = 'L', "Presencial"
-    ONLINE = 'O', "Online"
+# class Mode(models.Model):
+#     PRESENT='P'
+#     ONLINE='O'
+#     MODOS=[
+#         (PRESENT, "Presencial"),
+#         (ONLINE, "Online")
+#     ]
+#     choice = models.CharField(
+#         max_length=3,
+#         choices=MODOS,
+#         default=PRESENT
+#     )
 
 
 class Presenca(models.Model):
+    # Possibilidade de registar o motivo de noa ter ido a sessao
+    PRESENT = 'P'
+    ONLINE = 'O'
+    MODES = [
+        (PRESENT, "Presencial"),
+        (ONLINE, "Online")
+    ]
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE, null=True, blank=True,
                                       related_name='presencas')
     sessao = models.ForeignKey(Sessao, on_delete=models.CASCADE, null=True, blank=True, related_name='sessao')
     # info a recolher no formulário, com checkboxes
-    present = models.BooleanField()
-    mode = models.CharField(max_length=20,choices=MODE.choices, null=True, blank=True,)
+    present = models.BooleanField(default= False)
+    faltou = models.BooleanField(default=False)
+    mode = models.CharField(max_length=20,choices=MODES, null=True, blank=True,default=PRESENT)
     withApp = models.BooleanField(null=True, blank=True)
+    notaG = models.TextField(default=False)
 
 
