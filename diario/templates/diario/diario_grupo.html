@@ -36,10 +36,10 @@
 <div id="partilhas">
 
      <h1>partilhas do grupo {{ grupo_id }}</h1>
-      <form id="partilhaForm" onsubmit='return sendForm({{ participante_id }}, "partilhaForm");' method="post">
+      <form id="partilhaForm" onsubmit='return sendForm({{ grupo_id }}, "partilhaGrupoForm");' method="post">
         {% csrf_token %}
-        {{ partilhaForm.partilha }}
-        <input type="hidden" name="participante" value={{ participante_id }}>
+        {{ partilhaGrupoForm.partilha }}
+        <input type="hidden" name="grupo" value={{ grupo_id }}>
         <button type="submit" name="partilha">Guardar partilha</button>
     </form>
 
@@ -118,9 +118,13 @@
 
         {% endfor %}
 
-        <button type="submit"  name="cancel">Cancelar registo presença</button>
-
-         <button type="submit" name="nota">Guardar registo presença</button>
+        <form id="presencaForm" onsubmit='return sendForm({{ grupo_id }}, "presencaGrupoForm");' method="post">
+        {% csrf_token %}
+        {{ presencaGrupoForm.presenca }}
+        <input type="hidden" name="grupo" value={{ grupo_id }}>
+        <button type="submit" name="cancel">Cancelar registo presença</button>
+        <button type="submit" name="partilha">Guardar registo presença</button>
+    </form>
 <!--    <ul>-->
 <!--        {% for grup in participantes %}-->
 <!--            {% if grup_id == grupo_id %}-->
