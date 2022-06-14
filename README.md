@@ -1,3 +1,9 @@
+Duvidas:
+Parte participantes:
+Escolher atividade
+Parte grupo:
+Info errada
+
 # App diario-de-bordo
 
 A aplicação é a diario:
