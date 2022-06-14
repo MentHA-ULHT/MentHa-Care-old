@@ -1,3 +1,15 @@
+<!--<style>-->
+<!--.atividades {-->
+<!--  margin_left: 50px;-->
+<!--}-->
+<!--</style>-->
+<style>
+.atividades {
+  position: absolute;
+  left: 100px;
+  top: 150px;
+}
+</style>
 <div id="notas" style="overflow: auto;">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
 <!--    Escolha a opcao-->
@@ -55,7 +67,15 @@
 
 <div id="respostas">
 
-    <h1>Respostas do Participantes </h1>
+    <div id="escolherAtividade" style = "position:relative; left:380px; top:35px;">
+        <label for="Atividades" >Escolha a atividade:</label>
+      <select name="Atividades" id="Atividades" margin-left=250px>
+        <option value="Atividade 1">Atividade 1</option>
+        <option value="Atividade 2">Atividade 2</option>
+        <option value="Atividade 3">Atividade 3</option>
+        <option value="Atividade 4">Atividade 4</option>
+      </select>
+    </div>
     <ul>
         {% if respostas|length > 0 %}
         {% for no in respostas %}

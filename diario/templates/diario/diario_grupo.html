@@ -50,8 +50,8 @@ th {
 </div>
 
 <div id="partilhas">
-
      <h1>partilhas do grupo {{ grupo_id }}</h1>
+
       <form id="partilhaForm" onsubmit='return sendForm({{ grupo_id }}, "partilhaGrupoForm");' method="post">
         {% csrf_token %}
         {{ partilhaGrupoForm.partilha }}
