@@ -1,3 +1,19 @@
+<style>
+table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td {
+  text-align: center;
+}
+th {
+  text-align: center;
+}
+</style>
 <div id="notas">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
 
@@ -54,38 +70,17 @@
     </ul>
 </div>
 
-<div id="presencas">
-    <h1>Presenças do grupo {{ grupo_id }}</h1>
-<!--      <ul>-->
-<!--        {% if grupo|length > 0 %}-->
-<!--            {% for list in grupo %}-->
-<!--                <li>{{ list }}</li>-->
-<!--                <input type="checkbox" id="present" name="present">-->
-<!--                <label for="present">Presente</label>-->
-<!--            {% endfor %}-->
-<!--        {% else %}-->
-<!--            <li>Sem participantes</li>-->
-<!--        {% endif %}-->
-<!--    </ul>-->
-<!--&lt;!&ndash;     <h1>Presencas do grupo {{ grupo_id }}</h1>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash; <form id="notaForm" onsubmit='return sendForm({{ grupo_id }}, "notaForm");' method="post">&ndash;&gt;-->
-<!--&lt;!&ndash;        {% csrf_token %}&ndash;&gt;-->
-<!--&lt;!&ndash;        {{ notaForm.nota }}&ndash;&gt;-->
-<!--&lt;!&ndash;        <input type="hidden" name="grupo" value={{ grupo_id }}>&ndash;&gt;-->
-
-<!--        <button type="submit"  name="cancel">Cancelar presença</button>-->
-<!--        <button type="submit" name="nota">Guardar presença</button>-->
-
-    <p>Grupos</p>
-    <table border="3">
+<div id="presencas" >
+<!--    <h1>Presenças do grupo {{ grupo_id }}</h1>-->
+<!--    <p>Grupos</p>-->
+    <table border="3" >
         <tr>
             <th>Participantes</th>
             <th>Online</th>
             <th>Presencial</th>
-            <th>App</th>
-            <th>Caderno</th>
+            <th>Modo de resposta <br>
+            Caderno  &nbsp;&nbsp;  App</th>
+<!--            <th>Caderno</th>-->
         </tr>
     <ul>
         {% for grup in participantes %}
@@ -98,10 +93,12 @@
             </td>
             <td>
                 <input type="checkbox" id="vehicl3" name="escolha2" value="geral2">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" id="vehicl4" name="escolha3" value="geral3">
             </td>
-            <td>
-                <input type="checkbox" id="vehicl4" name="escolhA3" value="geral3">
-            </td>
+<!--            <td>-->
+<!--                <input type="checkbox" id="vehicl4" name="escolhA3" value="geral3">-->
+<!--            </td>-->
 <!--            <input type="checkbox" id="vehicl" name="escolha" value="geral">-->
 <!--            <label for="vehicl">Geral</label>-->
 <!--            <input type="checkbox" id="vehic" name="escolha" value="geral">-->
