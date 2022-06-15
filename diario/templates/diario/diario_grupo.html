@@ -13,8 +13,36 @@ td {
 th {
   text-align: center;
 }
+
 </style>
-<div id="notas">
+
+
+{% block script %}
+    <script>
+
+    /***************************************************************************/
+    /********** DOMContentLoaded ***********************************************/
+    /***************************************************************************/
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll("input").forEach(change => {
+            change.onclick = () => {
+            console.log("change")
+                console.log(change.nome+
+                input.dataset.participante);
+         }
+        });
+    }
+
+<!--    document.querySelector('input[name='participacao']:checked').value;-->
+
+
+
+</script>
+{% endblock %}
+
+
+<div id="notas" class="scrool">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
 
     <h2><b>Nova nota:</b></h2>
@@ -49,7 +77,7 @@ th {
 
 </div>
 
-<div id="partilhas">
+<div id="partilhas" class="auto">
      <h1>partilhas do grupo {{ grupo_id }}</h1>
 
       <form id="partilhaForm" onsubmit='return sendForm({{ grupo_id }}, "partilhaGrupoForm");' method="post">
@@ -70,73 +98,47 @@ th {
     </ul>
 </div>
 
-<div id="presencas" >
-<!--    <h1>Presenças do grupo {{ grupo_id }}</h1>-->
-<!--    <p>Grupos</p>-->
+<div id="presencas" class="auto">
+
+
     <table border="3" >
         <tr>
-            <th>Participantes</th>
-            <th>Online</th>
-            <th>Presencial</th>
-            <th>Modo de resposta <br>
-            Caderno  &nbsp;&nbsp;  App</th>
-<!--            <th>Caderno</th>-->
+            <th rowspan="2">Participantes</th>
+            <th rowspan="2">Online</th>
+            <th rowspan="2">Presencial</th>
+            <th rowspan="2">Nao veio</th>
+            <th colspan="2">Modo de resposta</th>
         </tr>
-    <ul>
-        {% for grup in participantes %}
-        <li>
-            <td>{{grup}}</td>
-            <td>
-                <input type="checkbox" id="vehicl1" name="escolha" value="geral">
-            <td>
-                <input type="checkbox" id="vehicl2" name="escolha1" value="geral1">
-            </td>
-            <td>
-                <input type="checkbox" id="vehicl3" name="escolha2" value="geral2">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="checkbox" id="vehicl4" name="escolha3" value="geral3">
-            </td>
-<!--            <td>-->
-<!--                <input type="checkbox" id="vehicl4" name="escolhA3" value="geral3">-->
-<!--            </td>-->
-<!--            <input type="checkbox" id="vehicl" name="escolha" value="geral">-->
-<!--            <label for="vehicl">Geral</label>-->
-<!--            <input type="checkbox" id="vehic" name="escolha" value="geral">-->
-<!--            <label for="vehic">Geral</label>-->
-<!--            <input type="checkbox" id="vehil" name="escolha" value="geral">-->
-<!--            <label for="vehil">Geral</label>-->
-<!--            <input type="checkbox" id="vehi" name="escolha" value="geral">-->
-<!--            <label for="vehi">Geral</label>-->
-<!--            <input type="checkbox" id="veh" name="escolha" value="geral">-->
-<!--            <label for="veh">Geral</label>-->
-        </li>
-    </ul>
+        <tr>
+            <th>Caderno</th>
+            <th>App</th>
+        </tr>
+        {% for participante in participantes %}
+        <div>
+            {{participante.id}}
+            {{participante.nome}}
+            <tr>
+                <td>{{participante}}</td>
+                <td>
+                    <input type="radio" id="online" data-participante="{{participante.id}}" value="online" name="participacao" id="onli">
+                </td>
+                <td>
+                    <input type="radio" id="presencial" data-participante="{{participante.id}}" value="presencial" name="participacao">
+                </td>
+                <td>
+                    <input type="radio" id="naopreente" data-participante="{{participante.id}}" value="naoVeio" name="participacao">
+                </td>
+                <td>
+                    <input type="radio" id="caderno" data-participante="{{participante.id}}" value="caderno" name="modo">
+                </td>
+                <td>
+                    <input type="radio" id="app" data-participante="{{participante.id}}" value="app" name="modo">
+                </td>
+            </tr>
+        </div>
+        {% endfor %}
 </table>
 
-        {% endfor %}
-
-        <form id="presencaForm" onsubmit='return sendForm({{ grupo_id }}, "presencaGrupoForm");' method="post">
-        {% csrf_token %}
-        {{ presencaGrupoForm.presenca }}
-        <input type="hidden" name="grupo" value={{ grupo_id }}>
-        <button type="submit" name="cancel">Cancelar registo presença</button>
-        <button type="submit" name="partilha">Guardar registo presença</button>
-    </form>
-<!--    <ul>-->
-<!--        {% for grup in participantes %}-->
-<!--            {% if grup_id == grupo_id %}-->
-<!--                <li>-->
-<!--                    {{grup}}-->
-
-<!--                </li>-->
-<!--            {% else %}-->
-<!--                <li>Sem participantes</li>-->
-<!--            {% endif %}-->
-<!--        {% endfor %}-->
-<!--    </ul>-->
-
-
-<!--    </form>-->
 </div>
 
 <div id="respostas">
@@ -146,7 +148,7 @@ th {
 
 </div>
 
-<div id="informacoes">
+<div id="informacoes" class="auto">
 
      <div class="detail-info-container" id="information-container"  onclick="myFunction()">
         <div class="titulo">Info</div>

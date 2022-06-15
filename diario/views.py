@@ -62,7 +62,7 @@ def view_diario_participante(request, id):
 def view_diario_grupo(request, idGrupo):
 
     context = {
-        'participantes': Participante.objects.all(),
+        'participantes': Participante.objects.filter(grupoCog= idGrupo).order_by('nome'),
         'grupo_id': idGrupo,
         'notasGrupo': Nota.objects.all(),
         'partilhas': Partilha.objects.filter(participante=idGrupo),

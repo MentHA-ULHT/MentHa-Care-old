@@ -292,6 +292,7 @@ div.detail-info-container > * {
             // onclick num participante
             document.querySelectorAll('.participantes button').forEach(botaoParticipante => {
                 botaoParticipante.onclick = () => {
+
                     ativaBotaoParticipante(botaoParticipante.dataset.id);
                     descarregaInfoParticipante(botaoParticipante.dataset.id);
                 }
