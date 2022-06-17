@@ -14,30 +14,80 @@ th {
   text-align: center;
 }
 
+<!--	$(document).ready(function(){<font></font>-->
+
+<!--	  $('#q4 .choice input').click(function(){<font></font>-->
+
+<!--	    var thisId = $(this).attr('id');<font></font>-->
+
+<!--	    $(this).parents('tr').find('.choice input').not("[id='"+thisId+"']").attr('checked',false);<font></font>-->
+<!--	  })<font></font>-->
+
+<!--	})-->
 </style>
 
 
 {% block script %}
     <script>
 
-    /***************************************************************************/
-    /********** DOMContentLoaded ***********************************************/
-    /***************************************************************************/
+        function sendInput(id, name, checked) {
+            let data = new FormData();
+            data.append('nome', name);
+            data.append('checked',checked);
 
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll("input").forEach(change => {
-            change.onclick = () => {
-            console.log("change")
-                console.log(change.nome+
-                input.dataset.participante);
-         }
-        });
-    }
+            csrfmiddlewaretoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+            data.append('csrfmiddlewaretoken',csrfmiddlewaretoken);
+
+            fetch('user/${id}', {
+                method: "POST",
+                body: data
+                })
+                .then(response => response);
+            return false;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('input').forEach(input => {
+                    input.onchange = () => {
+                        sendInput(input.dataset.id, input.nome, input.checked);
+                    }
+                });
+            });
+
+
+
+
+<!--    funtion senForm(idPessoa, formId){-->
+<!--        let data = new FormData(document.getElementById(formId));-->
+<!--        fetch('diario_grupo/${idgrupo}', { method: "Post", body: data })-->
+<!--            .then(response => response.onclick=() =>-->
+<!--            response.dataset.participante)-->
+<!--            .then(-->
+
+
+
+
+<!--    }-->
+
+
+<!--    /***************************************************************************/-->
+<!--    /********** DOMContentLoaded ***********************************************/-->
+<!--    /***************************************************************************/-->
+
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        document.querySelectorAll("input").forEach(change => {-->
+<!--            change.onclick = () => {-->
+<!--            console.log("change")-->
+<!--                console.log(change.nome+-->
+<!--                input.dataset.participante);-->
+<!--         }-->
+<!--        });-->
+<!--    }-->
 
 <!--    document.querySelector('input[name='participacao']:checked').value;-->
 
-
-
+var valor=0;
+var valor1=0;
 </script>
 {% endblock %}
 
@@ -101,7 +151,7 @@ th {
 <div id="presencas" class="auto">
 
 
-    <table border="3" >
+    <table border="3" id="q4" >
         <tr>
             <th rowspan="2">Participantes</th>
             <th rowspan="2">Online</th>
@@ -115,24 +165,24 @@ th {
         </tr>
         {% for participante in participantes %}
         <div>
-            {{participante.id}}
-            {{participante.nome}}
+<!--            {{participante.id}}-->
+<!--            {{participante.nome}}-->
             <tr>
                 <td>{{participante}}</td>
                 <td>
-                    <input type="radio" id="online" data-participante="{{participante.id}}" value="online" name="participacao" id="onli">
+                    <input type="radio"  data-participante="{{participante.id}}" value="online" name="{{participante.id}}" {% if participante.online %} checked {% endif %}>
                 </td>
                 <td>
-                    <input type="radio" id="presencial" data-participante="{{participante.id}}" value="presencial" name="participacao">
+                    <input type="radio" data-participante="{{participante.id}}" value="presencial" name="{{participante.id}}" {% if participante.presencial %} checked {% endif %}>
                 </td>
                 <td>
-                    <input type="radio" id="naopreente" data-participante="{{participante.id}}" value="naoVeio" name="participacao">
+                    <input type="radio" data-participante="{{participante.id}}" value="naoVeio" name="{{participante.id}}" {% if participante.naoVeio %} checked {% endif %}>
                 </td>
                 <td>
-                    <input type="radio" id="caderno" data-participante="{{participante.id}}" value="caderno" name="modo">
+                    <input type="radio"  data-participante="{{participante.id}}" value="caderno" name="{{participante.id}}+1">
                 </td>
                 <td>
-                    <input type="radio" id="app" data-participante="{{participante.id}}" value="app" name="modo">
+                    <input type="radio" data-participante="{{participante.id}}" value="app" name="{{participante.id}}+1">
                 </td>
             </tr>
         </div>
