@@ -86,10 +86,8 @@ th {
 
 <!--    document.querySelector('input[name='participacao']:checked').value;-->
 
-var valor=0;
-var valor1=0;
 </script>
-{% endblock %}
+
 
 
 <div id="notas" class="scrool">
@@ -114,8 +112,9 @@ var valor1=0;
     <h2><b>Lista das notas de grupo  {{grupo_id}}</b></h2>
 
     <ul>
-        {% if notasGrupo|length > 0 %}
-            {% for nota in notasGrupo %}
+        {% if notaG|length > 0 %}
+        <li> {{notaG}}</li>
+            {% for nota in notaG %}
                 <li> {{ nota.grupo }} </li>
                 <li>{{ nota }} </li>
             {% endfor %}
@@ -165,8 +164,6 @@ var valor1=0;
         </tr>
         {% for participante in participantes %}
         <div>
-<!--            {{participante.id}}-->
-<!--            {{participante.nome}}-->
             <tr>
                 <td>{{participante}}</td>
                 <td>

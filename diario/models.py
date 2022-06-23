@@ -129,13 +129,12 @@ class Informacoes(models.Model):
 
 class Respostas(models.Model):
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
+    pergunta = models.CharField(null=True, blank=True, max_length=1)
     respostas = models.TextField()
     data = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return f'{self.respostas}'
-
-
 
 
 class GrupoAvalia(Grupo):
@@ -167,36 +166,32 @@ class PartilhaGrupo(models.Model):
         return f'{self.partilha}'
 
 
-# class Mode(models.Model):
-#     PRESENT='P'
-#     ONLINE='O'
-#     MODOS=[
-#         (PRESENT, "Presencial"),
-#         (ONLINE, "Online")
-#     ]
-#     choice = models.CharField(
-#         max_length=3,
-#         choices=MODOS,
-#         default=PRESENT
-#     )
-
 
 class Presenca(models.Model):
     # Possibilidade de registar o motivo de noa ter ido a sessao
     PRESENT = 'P'
     ONLINE = 'O'
+    PROTOCOLO ='PR'
+    COG = 'CG'
+    CARE = 'CR'
     MODES = [
         (PRESENT, "Presencial"),
         (ONLINE, "Online")
     ]
+    SESSAO = [
+        (PROTOCOLO, "Protocolo"),
+        (COG, "Cog"),
+        (CARE, "Care")
+    ]
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE, null=True, blank=True,
                                       related_name='presencas')
+    tipoSessao = models.CharField(choices=SESSAO, null=True, blank=True,default=CARE,max_length=20)
     sessao = models.ForeignKey(Sessao, on_delete=models.CASCADE, null=True, blank=True, related_name='sessao')
     # info a recolher no formulário, com checkboxes
     present = models.BooleanField(default= False)
     faltou = models.BooleanField(default=False)
     mode = models.CharField(max_length=20,choices=MODES, null=True, blank=True,default=PRESENT)
     withApp = models.BooleanField(null=True, blank=True)
-    notaG = models.TextField(default=False)
+    notaG = models.TextField(null=True, blank=True)
 
 
