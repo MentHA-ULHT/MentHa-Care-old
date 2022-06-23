@@ -64,12 +64,12 @@ def view_diario_grupo(request, idGrupo):
     context = {
         'participantes': Participante.objects.filter(grupoCog= idGrupo).order_by('nome'),
         'grupo_id': idGrupo,
-        'notasGrupo': Nota.objects.all(),
-        'partilhas': Partilha.objects.filter(participante=idGrupo),
+        'notasGrupo': NotaGrupo.objects.all(),
+        'partilhas': PartilhaGrupo.objects.all(),
         'informacoes': Informacoes.objects.all(),
-        'respostas': Respostas.objects.filter(participante=idGrupo).order_by('-data'),
-        'notaForm': NotaForm(),
-        'partilhaForm': PartilhaForm()
+        'respostas': Respostas.objects.all(),
+        'notaForm': NotaGrupoForm(),
+        'partilhaGrupoForm': PartilhaGrupoForm()
 
     }
 

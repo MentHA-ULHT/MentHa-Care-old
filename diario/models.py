@@ -124,7 +124,7 @@ class Informacoes(models.Model):
     data = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f'{self.partilha}'
+        return f'{self.informacoes}'
 
 
 class Respostas(models.Model):
@@ -164,6 +164,14 @@ class PartilhaGrupo(models.Model):
 
     def __str__(self):
         return f'{self.partilha}'
+
+class InformacoesGrupo(models.Model):
+    grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
+    informacoesGrupo = models.TextField()
+    data = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return f'{self.informacoesGrupo}'
 
 
 

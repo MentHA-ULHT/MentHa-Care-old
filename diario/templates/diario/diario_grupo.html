@@ -14,18 +14,7 @@ th {
   text-align: center;
 }
 
-<!--	$(document).ready(function(){<font></font>-->
-
-<!--	  $('#q4 .choice input').click(function(){<font></font>-->
-
-<!--	    var thisId = $(this).attr('id');<font></font>-->
-
-<!--	    $(this).parents('tr').find('.choice input').not("[id='"+thisId+"']").attr('checked',false);<font></font>-->
-<!--	  })<font></font>-->
-
-<!--	})-->
 </style>
-
 
 {% block script %}
     <script>
@@ -87,10 +76,9 @@ th {
 <!--    document.querySelector('input[name='participacao']:checked').value;-->
 
 </script>
+{% endblock %}
 
-
-
-<div id="notas" class="scrool">
+<div id="notas">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
 
     <h2><b>Nova nota:</b></h2>
@@ -112,10 +100,10 @@ th {
     <h2><b>Lista das notas de grupo  {{grupo_id}}</b></h2>
 
     <ul>
-        {% if notaG|length > 0 %}
-        <li> {{notaG}}</li>
-            {% for nota in notaG %}
-                <li> {{ nota.grupo }} </li>
+        {% if notasGrupo|length > 0 %}
+<!--        <li> {{notasGrupo}}</li>-->
+            {% for nota in notasGrupo %}
+<!--                <li> {{ nota.grupo }} </li>-->
                 <li>{{ nota }} </li>
             {% endfor %}
         {% else %}
@@ -126,7 +114,7 @@ th {
 
 </div>
 
-<div id="partilhas" class="auto">
+<div id="partilhas" >
      <h1>partilhas do grupo {{ grupo_id }}</h1>
 
       <form id="partilhaForm" onsubmit='return sendForm({{ grupo_id }}, "partilhaGrupoForm");' method="post">
@@ -147,8 +135,7 @@ th {
     </ul>
 </div>
 
-<div id="presencas" class="auto">
-
+<div id="presencas" >
 
     <table border="3" id="q4" >
         <tr>
@@ -188,14 +175,7 @@ th {
 
 </div>
 
-<div id="respostas">
-
-     <h1>Respostas do grupo {{ grupo_id }}</h1>
-
-
-</div>
-
-<div id="informacoes" class="auto">
+<div id="informacoes" >
 
      <div class="detail-info-container" id="information-container"  onclick="myFunction()">
         <div class="titulo">Info</div>
@@ -226,4 +206,14 @@ th {
             deserunt mollit anim id est laborum.
         </div>
     </div>
+</div>
+
+
+
+<!-- As respostas nao fazem parte do grupo -->
+<div id="respostas">
+
+     <h1>Respostas do grupo {{ grupo_id }}</h1>
+
+
 </div>

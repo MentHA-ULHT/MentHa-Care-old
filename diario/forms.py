@@ -49,16 +49,8 @@ class PartilhaGrupoForm(ModelForm):
         model = PartilhaGrupo
         fields = '__all__'
         widgets = {
-            'PartilhaGrupo': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma partilha sobre o grupo...'}),
+            'partilhaGrupoForm': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma partilha sobre o grupo...'}),
         }
-
-# class ModeForm(ModelForm):
-#     class Meta:
-#         model = Mode
-#         fields = '__all__'
-#         widgets = {
-#             'MODE': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva um modo...'}),
-#         }
 
 class PresencaForm(ModelForm):
     class Meta:
