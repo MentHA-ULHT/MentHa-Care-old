@@ -165,16 +165,15 @@ display
 <!-- Parte esquerda do ecra -->
 
 #esq {
-  height: 60vh;
+  height: 100vh;
   display: grid;
   gap: 0.5em;
-  grid-template-rows: 2em 2em 2em 2em 1fr;
   float: left;
   width: 40vw;
+  grid-template-rows: auto auto auto 1fr;
 }
 
 #esq > * {
-
   background: whitesmoke;
   padding: 0.3em;
   border:0.01em;
@@ -414,6 +413,7 @@ display
   <div>Conteudo</div>
   <div>Main</div>
 </div>
+
 
 
 {% endblock %}
