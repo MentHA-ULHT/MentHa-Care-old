@@ -9,21 +9,17 @@ def view_care_grupos(request):
     contexto = {'grupos': GrupoCare.objects.all()}
     return render(request, "diario/care_grupos.html", contexto)
 
-
 def view_cog_grupos(request):
     contexto = {'grupos': GrupoCog.objects.all()}
     return render(request, "diario/cog_grupos.html", contexto)
-
 
 def view_avalia_grupos(request):
     contexto = {'grupos': GrupoAvalia.objects.all()}
     return render(request, "diario/avalia_grupos.html", contexto)
 
-
 def view_participantes(request):
     contexto = {'grupos': GrupoCog.objects.all(), 'participantes': Participante.objects.all()}
     return render(request, "diario/participantes.html", contexto)
-
 
 def view_diario(request):
 
@@ -34,7 +30,6 @@ def view_diario(request):
     }
 
     return render(request, "diario/diario.html", contexto)
-
 
 def view_diario_participante(request, id):
 
@@ -58,14 +53,13 @@ def view_diario_participante(request, id):
 
     return render(request, "diario/diario_participante.html", context)
 
-
 def view_diario_grupo(request, idGrupo):
 
     context = {
-        'participantes': Participante.objects.filter(grupoCog= idGrupo).order_by('nome'),
+        'participantes': Participante.objects.filter(grupoCog=idGrupo).order_by('nome'),
         'grupo_id': idGrupo,
-        'notasGrupo': NotaGrupo.objects.all(),
-        'partilhas': PartilhaGrupo.objects.all(),
+        'notasGrupo': NotaGrupo.objects.filter(grupo=idGrupo),
+        'partilhas': PartilhaGrupo.objects.filter(grupo=idGrupo),
         'informacoes': Informacoes.objects.all(),
         'respostas': Respostas.objects.all(),
         'notaForm': NotaGrupoForm(),

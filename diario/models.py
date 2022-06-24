@@ -30,6 +30,8 @@ class Exercicio(models.Model):
 # cuidador tem paciente(es) e grupo. paciente tem cuidador(es) e grupo. dinamizador(es) tem grupo(s).
 
 class Grupo(models.Model):
+    # participantes = models.ManyToManyField(Participante,related_name='grupos')
+
     nome = models.CharField(max_length=20)
     def __str__(self):
         return f'{self.nome}'
@@ -144,12 +146,11 @@ class GrupoAvalia(Grupo):
         return f'{self.nome}'
 
 
-
-# Criacao da class para o grupo
+                    # Criacao da class para o grupo
 
 class NotaGrupo(models.Model):
     grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE, null=True, blank=True)
-    notaG = models.TextField()
+    descricao = models.TextField()
     data = models.DateTimeField(auto_now_add=True, null=True)
     # podemos ter alternativamente dois campos: criado, modificado sendo o segundo atualizado se modificada a nota
     # https://stackoverflow.com/questions/1737017/django-auto-now-and-auto-now-add
@@ -159,7 +160,7 @@ class NotaGrupo(models.Model):
 
 class PartilhaGrupo(models.Model):
     grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
-    partilha = models.TextField()
+    descricao = models.TextField()
     data = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
@@ -167,7 +168,7 @@ class PartilhaGrupo(models.Model):
 
 class InformacoesGrupo(models.Model):
     grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
-    informacoesGrupo = models.TextField()
+    descricao = models.TextField()
     data = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
@@ -200,6 +201,6 @@ class Presenca(models.Model):
     faltou = models.BooleanField(default=False)
     mode = models.CharField(max_length=20,choices=MODES, null=True, blank=True,default=PRESENT)
     withApp = models.BooleanField(null=True, blank=True)
-    notaG = models.TextField(null=True, blank=True)
+    descricao = models.TextField(null=True, blank=True)
 
 

@@ -2,166 +2,186 @@
 
 {
 {% block style %}
-    nav a:nth-child(5) {
-    color: black;
-    font-weight: 600;
-    }
+nav a:nth-child(5) {
+color: black;
+font-weight: 600;
+}
 
-    @media (min-width: 1000px) {
-        div.direita {
-        float: right;
-        width: 50vw;
-    }
-    }
+@media (min-width: 1000px) {
+div.direita {
+float: right;
+width: 50vw;
+}
+}
 
-    .diario > div {
-    padding: 0.5em;
-    margin: 0.5em;
-    font-size: 1em;
-    border-radius: 6px;
-    border: 0px;
-    background-color: whitesmoke;
-    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
-    }
+.diario > div {
+padding: 0.5em;
+margin: 0.5em;
+font-size: 1em;
+border-radius: 6px;
+border: 0px;
+background-color: whitesmoke;
+box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+}
 
-    .grupo .ver-grupo{
-    grid-area: grupo;
-    }
 
-    .grupo {
-    padding: 0.5em 4em 2em 3em;
-    }
+.grupo .ver-grupo{
+grid-area: grupo;
+}
 
-    .grupo button {
-        width: 100%;
-    }
+.grupo {
+padding: 0.5em 4em 2em 3em;
+}
 
-    .participantes {
-    padding: 0.5em 3em 2em 3em;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    }
+.grupo button {
+width: 100%;
+}
 
-    .diario .ver-notas {
-    grid-area: notas;
-    }
+.participantes {
+padding: 0.5em 3em 2em 3em;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+}
 
-    .diario .ver-respostas {
-    grid-area: respostas;
-    }
+.diario .ver-notas {
+grid-area: notas;
+}
 
-    .diario .ver-informacoes {
-    grid-area: informacoes;
-    }
+.diario .ver-respostas {
+grid-area: respostas;
+}
 
-    .diario .ver-partilhas {
-    grid-area: partilhas;
-    }
+.diario .ver-informacoes {
+grid-area: informacoes;
+}
 
-    .diario .info {
-    grid-area: info;
-    height: 600px;
-    background-color: whitesmoke;
-    }
+.diario .ver-partilhas {
+grid-area: partilhas;
+}
 
-    /* configuração dos formulários das notas e partilhas */
-    .diario .info form {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 0.2em;
-    padding: 1.5em;
-    }
+.diario .info {
+grid-area: info;
+height: 600px;
+background-color: whitesmoke;
+}
 
-    /* configuração da data */
-    .info .data {
-    font-size: 0.5em;
-    color: grey;
-    font-style: italic;
-    padding: 0 0 0 1em;
-    }
+/* configuração dos formulários das notas e partilhas */
+.diario .info form {
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+gap: 0.2em;
+padding: 1.5em;
+}
 
-    /* configuração da lista */
-    .info ul > li {
-    padding: 0.5em 0;
-    }
+/* configuração da data */
+.info .data {
+font-size: 0.5em;
+color: grey;
+font-style: italic;
+padding: 0 0 0 1em;
+}
 
-    /* configuração do botão "Guardar" dos formulários */
-    .info [type='submit'] {
-    background-color: purple;
-    border-radius: 0 0 6px 6px;
-    color: white;
-    margin: 0em 0em 0em 0em;
-    }
+/* configuração da lista */
+.info ul > li {
+padding: 0.5em 0;
+}
 
-    /* configuração da área de texto */
-    .diario textarea {
-    resize: none;
-    border-radius: 6px 6px 0 0;
-    /* https://getcssscan.com/css-box-shadow-examples */
-    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
-    }
+/* configuração do botão "Guardar" dos formulários */
+.info [type='submit'] {
+background-color: purple;
+border-radius: 0 0 6px 6px;
+color: white;
+margin: 0em 0em 0em 0em;
+}
 
-    .diario {
-    margin: 0 3em;
+/* configuração da área de texto */
+.diario textarea {
+resize: none;
+border-radius: 6px 6px 0 0;
+/* https://getcssscan.com/css-box-shadow-examples */
+box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+}
 
-    display: grid;
-    grid-template-areas:
-    'notas partilhas respostas informacoes'
-    'info  info info info';
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
+.diario {
+margin: 0 3em;
 
-    <!-- Inicio diarioParticpante.html-->
+display: grid;
+grid-template-areas:
+'notas partilhas respostas informacoes'
+'info  info info info';
+grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 
+<!-- Inicio diarioParticpante.html-->
 
 div.detail-info-container > * {
-  padding:10px;
-  margin:5px;
+padding:10px;
+margin:5px;
 }
 .detail-info-container{
-  position:relative;
+position:relative;
 }
+
 #informacoes{
-    display: flex;
-    flex-direction:column;
-    gap: 2em;
+display: flex;
+flex-direction:column;
+gap: 2em;
 
 }
 #informacoes > div {
-    padding:0.5em;
-    border-radius:1em;
+padding:0.5em;
+border-radius:1em;
 
 }
 .infos{
-  background-color: whitesmoke;
-  display:none;
-  position: absolute;
-  z-index:2;
-  width:calc(100% - 10px);
-  top: calc(100%);
-  left:0px;
-  padding:10px 10px 10px 10px;
+background-color: whitesmoke;
+display:none;
+position: absolute;
+z-index:2;
+width:calc(100% - 10px);
+top: calc(100%);
+left:0px;
+padding:10px 10px 10px 10px;
 }
 .titulo{
-  background-color: transparent;
-  border:0.08em;
-  border-radius:5px;
-  padding:0.5em;
-  border-style:solid;
-  border-color: #47B5C4;
+background-color: balck;
+border:0.08em;
+border-radius:5px;
+padding:0.5em;
+border-style:solid;
+border-color: #47B5C4;
 }
 
 .selectedButton{
 
 }
 .ignoredButton{
-  display
+display
 }
 
-    <!-- Fim diarioParticpante.html-->
+<!-- Fim diarioParticpante.html-->
 
+<!-- Parte esquerda do ecra -->
 
+#esq {
+  height: 60vh;
+  display: grid;
+  gap: 0.5em;
+  grid-template-rows: 2em 2em 2em 2em 1fr;
+  float: left;
+  width: 40vw;
+}
+
+#esq > * {
+
+  background: whitesmoke;
+  padding: 0.3em;
+  border:0.01em;
+  border-radius:5px;
+  border-style:solid;
+  border-color: #47B5C4;
+}
 
 {% endblock %}
 
@@ -169,7 +189,7 @@ div.detail-info-container > * {
 // Em falta, criar botao de respostas e de informacoes com o seu conteudo
 
 {% block script %}
-    <script>
+<script>
 
         var menuAtivo;
 
@@ -279,6 +299,10 @@ div.detail-info-container > * {
         }
       };
     });
+
+                        <!--  Opcoes dashboard  -->
+
+
         }
 
         /***************************************************************************/
@@ -288,6 +312,7 @@ div.detail-info-container > * {
         document.addEventListener('DOMContentLoaded', function () {
 
             menuAtivo = document.querySelector("[data-menu='notas']");
+            document.querySelector("[data-menu='respostas']").style.display = 'none';
 
             // onclick num participante
             document.querySelectorAll('.participantes button').forEach(botaoParticipante => {
@@ -351,34 +376,44 @@ div.detail-info-container > * {
             return false;
         }
 
-    </script>
+
+
+</script>
 {% endblock %}
 
 {% block main %}
 
-    <div class="direita">
-        <div class="participantes">
-            {% for participante in participantes %}
-                    <button data-id="{{ participante.id }}">{{ participante }}</button>
-            {% endfor %}
-        </div>
 
-        <div class="grupo">
-            <button  data-idgrupo="{{ grupo.id }}">Grupo</button>
-        </div>
-
-
-        <div class="diario">
-
-            <button class="menu" data-menu="informacoes">Informações</button>
-            <button class="menu" data-menu="presencas">Presenças</button>
-            <button class="menu" data-menu="respostas">Respostas</button>
-            <button class="menu" data-menu="notas">Notas</button>
-            <button class="menu" data-menu="partilhas">Partilhas</button>
-
-
-            <div class="info"></div>
-        </div>
+<div class="direita">
+    <div class="participantes">
+        {% for participante in participantes %}
+        <button data-id="{{ participante.id }}">{{ participante }}</button>
+        {% endfor %}
     </div>
+
+    <div class="grupo">
+        <button data-idgrupo="{{ grupo.id }}">Grupo</button>
+    </div>
+
+
+    <div class="diario">
+
+        <button class="menu" data-menu="informacoes">Informações</button>
+        <button class="menu" data-menu="presencas">Presenças</button>
+        <button class="menu" data-menu="respostas">Respostas</button>
+        <button class="menu" data-menu="notas">Notas</button>
+        <button class="menu" data-menu="partilhas">Partilhas</button>
+
+
+        <div class="info"></div>
+    </div>
+</div>
+<div id="esq">
+  <div>Info</div>
+  <div>Descrição</div>
+  <div>Conteudo</div>
+  <div>Main</div>
+</div>
+
 
 {% endblock %}
