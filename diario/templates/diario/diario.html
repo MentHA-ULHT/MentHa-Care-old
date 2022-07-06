@@ -2,17 +2,39 @@
 
 {
 {% block style %}
+
 nav a:nth-child(5) {
-color: black;
-font-weight: 600;
+    color: black;
+    font-weight: 600;
+}
+
+
+/***********************************************************/
+/*  configuracao do layout geral da pagina                **/
+/***********************************************************/
+
+@media (max-width: 999px) {
+    main {
+        display:grid;
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (min-width: 1000px) {
-div.direita {
-float: right;
-width: 50vw;
+    main {
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
-}
+
+
+/***********************************************************/
+/*  configuracao do diario                                **/
+/***********************************************************/
+
+<!--div#esq {-->
+<!--    background:blue;-->
+<!--}-->
 
 .diario > div {
 padding: 0.5em;
@@ -23,7 +45,6 @@ border: 0px;
 background-color: whitesmoke;
 box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
 }
-
 
 .grupo .ver-grupo{
 grid-area: grupo;
@@ -113,7 +134,11 @@ grid-template-areas:
 grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-<!-- Inicio diarioParticpante.html-->
+
+/***********************************************************/
+/*  configuracao do diarioParticipante.html               **/
+/***********************************************************/
+
 
 div.detail-info-container > * {
 padding:10px;
@@ -160,17 +185,22 @@ border-color: #47B5C4;
 display
 }
 
-<!-- Fim diarioParticpante.html-->
 
-<!-- Parte esquerda do ecra -->
+/***********************************************************/
+/*  configuracao da parte esquerda                        **/
+/***********************************************************/
 
 #esq {
-  height: 100vh;
-  display: grid;
-  gap: 0.5em;
   float: left;
-  width: 40vw;
-  grid-template-rows: auto auto auto 1fr;
+  padding: 1em;
+  display: grid;
+  gap: 1em;
+  grid-template-rows: auto auto auto 2em 1fr;
+}
+.space{
+  background-color: black;
+  padding:10px 10px 10px 10px;
+
 }
 
 #esq > * {
@@ -181,7 +211,25 @@ display
   border-style:solid;
   border-color: #47B5C4;
 }
+.detail-info-containers{
+  position:relative;
+}
+.in{
+  background-color: whitesmoke;
 
+  z-index:2;
+  width:calc(100% - 10px);
+  top: calc(100%);
+  left:0px;
+  padding:10px 10px 10px 10px;
+}
+.tituloss{
+  background-color: transparent;
+/*   border:0.01em;
+  border-radius:5px;
+  border-style:solid;
+  border-color: #47B5C4; */
+}
 {% endblock %}
 
 
@@ -189,6 +237,15 @@ display
 
 {% block script %}
 <script>
+function showContent(element){
+  element.style.display = "block";
+  document.querySelector("#" + element.id + " > .in").style.display="block"
+  console.log(element.id);
+}
+
+function hideContent(element){
+  document.querySelector("#" + element.id + " > .in").style.display="none"
+}
 
         var menuAtivo;
 
@@ -299,9 +356,6 @@ display
       };
     });
 
-                        <!--  Opcoes dashboard  -->
-
-
         }
 
         /***************************************************************************/
@@ -382,37 +436,54 @@ display
 
 {% block main %}
 
-
-<div class="direita">
-    <div class="participantes">
-        {% for participante in participantes %}
-        <button data-id="{{ participante.id }}">{{ participante }}</button>
-        {% endfor %}
-    </div>
-
-    <div class="grupo">
-        <button data-idgrupo="{{ grupo.id }}">Grupo</button>
-    </div>
+<main>
 
 
-    <div class="diario">
+    <div id="esq" >
+        <div class="detail-info-containers" id="information-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
+    <div class="tituloss">Informação</div>
+    <div class="in">Lorem ipsum dolor sit amet, !! Informacoes !!</div>
+  </div>
 
-        <button class="menu" data-menu="informacoes">Informações</button>
-        <button class="menu" data-menu="presencas">Presenças</button>
-        <button class="menu" data-menu="respostas">Respostas</button>
-        <button class="menu" data-menu="notas">Notas</button>
-        <button class="menu" data-menu="partilhas">Partilhas</button>
+  <div class="detail-info-containers" id="materials-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
+    <div class="tituloss">Materiais</div>
+    <div class="in">Lorem ipsum dolor sit amet, !! Materiais !!</div>
+  </div>
+        <div class="detail-info-containers" id="observations-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
+    <div class="tituloss">Observações</div>
+    <div class="in">Lorem ipsum dolor sit amet, !! Observacoes !!</div>
+  </div>
 
-
-        <div class="info"></div>
-    </div>
-</div>
-<div id="esq">
-  <div>Info</div>
-  <div>Descrição</div>
-  <div>Conteudo</div>
+        <div class="space"> </div>
   <div>Main</div>
-</div>
+    </div>
+
+   <div  class="direita">
+        <div class="participantes">
+            {% for participante in participantes %}
+            <button data-id="{{ participante.id }}">{{ participante }}</button>
+            {% endfor %}
+        </div>
+
+        <div class="grupo">
+            <button data-idgrupo="{{ grupo.id }}">Grupo</button>
+        </div>
+
+
+        <div class="diario">
+
+            <button class="menu" data-menu="informacoes">Informações</button>
+            <button class="menu" data-menu="presencas">Presenças</button>
+            <button class="menu" data-menu="respostas">Respostas</button>
+            <button class="menu" data-menu="notas">Notas</button>
+            <button class="menu" data-menu="partilhas">Partilhas</button>
+
+
+            <div class="info"></div>
+        </div>
+    </div>
+
+</main>
 
 
 
