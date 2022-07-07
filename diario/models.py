@@ -17,14 +17,18 @@ class Evento(models.Model):
 
 class Sessao(Evento):
     nome = models.CharField(max_length=10)
-
+    def __str__(self):
+        return f'{self.nome}'
+    # class Meta:
+    #     abstract = True
 
 class Exercicio(models.Model):
-    nome = models.CharField(max_length=10)
+    nome = models.CharField(max_length=100)
     sessao = models.ManyToManyField(Sessao)
     materiais = models.CharField(max_length=1000)
     instrucao = models.CharField(max_length=1000)
-
+    def __str__(self):
+        return f'{self.nome}'
 
 # muitos tipos de utilizadores!
 # cuidador tem paciente(es) e grupo. paciente tem cuidador(es) e grupo. dinamizador(es) tem grupo(s).
@@ -156,7 +160,7 @@ class NotaGrupo(models.Model):
     # https://stackoverflow.com/questions/1737017/django-auto-now-and-auto-now-add
 
     def __str__(self):
-        return f'{self.notaG}'
+        return f'{self.descricao}'
 
 class PartilhaGrupo(models.Model):
     grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
@@ -164,7 +168,7 @@ class PartilhaGrupo(models.Model):
     data = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f'{self.partilha}'
+        return f'{self.descricao}'
 
 class InformacoesGrupo(models.Model):
     grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
@@ -172,7 +176,7 @@ class InformacoesGrupo(models.Model):
     data = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f'{self.informacoesGrupo}'
+        return f'{self.descricao}'
 
 
 

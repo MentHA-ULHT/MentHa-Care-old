@@ -195,12 +195,12 @@ display
   padding: 1em;
   display: grid;
   gap: 1em;
-  grid-template-rows: auto auto auto 2em 1fr;
+  grid-template-rows: 2em 2em 2em 4em 1fr;
 }
 .space{
-  background-color: black;
-  padding:10px 10px 10px 10px;
-
+  background-color: transparent;
+  border-color=transparent1,
+position: absolute;
 }
 
 #esq > * {
@@ -215,9 +215,9 @@ display
   position:relative;
 }
 .in{
+  position:absolute;
   background-color: whitesmoke;
-
-  z-index:2;
+  z-index:10;
   width:calc(100% - 10px);
   top: calc(100%);
   left:0px;
@@ -225,6 +225,7 @@ display
 }
 .tituloss{
   background-color: transparent;
+
 /*   border:0.01em;
   border-radius:5px;
   border-style:solid;
@@ -237,6 +238,10 @@ display
 
 {% block script %}
 <script>
+        /***************************************************************************/
+        /********** Inicio parte esquerda ***********************************************/
+        /***************************************************************************/
+
 function showContent(element){
   element.style.display = "block";
   document.querySelector("#" + element.id + " > .in").style.display="block"
@@ -246,6 +251,10 @@ function showContent(element){
 function hideContent(element){
   document.querySelector("#" + element.id + " > .in").style.display="none"
 }
+        /***************************************************************************/
+        /********** Fim parte esquerda ***********************************************/
+        /***************************************************************************/
+
 
         var menuAtivo;
 
@@ -442,7 +451,20 @@ function hideContent(element){
     <div id="esq" >
         <div class="detail-info-containers" id="information-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
     <div class="tituloss">Informação</div>
-    <div class="in">Lorem ipsum dolor sit amet, !! Informacoes !!</div>
+    <div class="in">
+
+<!--            Lorem ipsum dolor sit amet, !! Informacoes !!-->
+        <li>
+        {% if detalhes|length > 0 %}
+        {% for detalhe in detalhes %}
+        <li>{{ detalhe }} </li>
+        {% endfor %}
+        {% else %}
+        <li>Sem detalhe</li>
+        {% endif %}
+        </li>
+
+    </div>
   </div>
 
   <div class="detail-info-containers" id="materials-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
@@ -454,7 +476,7 @@ function hideContent(element){
     <div class="in">Lorem ipsum dolor sit amet, !! Observacoes !!</div>
   </div>
 
-        <div class="space"> </div>
+        <div class="space"></div>
   <div>Main</div>
     </div>
 
