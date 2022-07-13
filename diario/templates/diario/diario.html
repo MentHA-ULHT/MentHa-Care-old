@@ -18,6 +18,7 @@ nav a:nth-child(5) {
         display:grid;
         grid-template-columns: 1fr;
     }
+
 }
 
 @media (min-width: 1000px) {
@@ -25,16 +26,13 @@ nav a:nth-child(5) {
         display:grid;
         grid-template-columns: 1fr 1fr;
     }
+
 }
 
 
 /***********************************************************/
 /*  configuracao do diario                                **/
 /***********************************************************/
-
-<!--div#esq {-->
-<!--    background:blue;-->
-<!--}-->
 
 .diario > div {
 padding: 0.5em;
@@ -186,6 +184,24 @@ display
 }
 
 
+
+<!-- Teste parte de baixo -->
+#footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+
+}
+footer {
+  background-color: transparent;
+  padding: 10px;
+  text-align: center;
+
+}
+
+
+
+
 /***********************************************************/
 /*  configuracao da parte esquerda                        **/
 /***********************************************************/
@@ -196,12 +212,9 @@ display
   display: grid;
   gap: 1em;
   grid-template-rows: 2em 2em 2em 4em 1fr;
+
 }
-.space{
-  background-color: transparent;
-  border-color=transparent1,
-position: absolute;
-}
+
 
 #esq > * {
   background: whitesmoke;
@@ -209,10 +222,15 @@ position: absolute;
   border:0.01em;
   border-radius:5px;
   border-style:solid;
-  border-color: #47B5C4;
+  border-color: transparent;
+
 }
 .detail-info-containers{
   position:relative;
+
+}
+.space{
+    background-color: red;
 }
 .in{
   position:absolute;
@@ -225,17 +243,13 @@ position: absolute;
 }
 .tituloss{
   background-color: transparent;
-
-/*   border:0.01em;
-  border-radius:5px;
-  border-style:solid;
-  border-color: #47B5C4; */
 }
 {% endblock %}
 
 
 // Em falta, criar botao de respostas e de informacoes com o seu conteudo
 
+}
 {% block script %}
 <script>
         /***************************************************************************/
@@ -444,39 +458,55 @@ function hideContent(element){
 {% endblock %}
 
 {% block main %}
-
+<body>
 <main>
 
 
     <div id="esq" >
         <div class="detail-info-containers" id="information-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
-    <div class="tituloss">Informação</div>
+    <div class="tituloss">Introdução</div>
     <div class="in">
-
-<!--            Lorem ipsum dolor sit amet, !! Informacoes !!-->
-        <li>
-        {% if detalhes|length > 0 %}
-        {% for detalhe in detalhes %}
-        <li>{{ detalhe }} </li>
+           {% if sessao|length > 0 %}
+        {% for detalhe in sessao %}
+        <li>{{ detalhe.introducao }} </li>
+<!--        <li>{{ detalhe.materiais }} </li>-->
+<!--        <li>{{ detalhe.sessao }} </li>-->
+<!--        <li>{{ detalhe.nome }} </li>-->
         {% endfor %}
         {% else %}
-        <li>Sem detalhe</li>
+        <li>Sem exercicios da sessao</li>
         {% endif %}
-        </li>
+
 
     </div>
   </div>
 
   <div class="detail-info-containers" id="materials-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
-    <div class="tituloss">Materiais</div>
-    <div class="in">Lorem ipsum dolor sit amet, !! Materiais !!</div>
-  </div>
-        <div class="detail-info-containers" id="observations-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
-    <div class="tituloss">Observações</div>
-    <div class="in">Lorem ipsum dolor sit amet, !! Observacoes !!</div>
+    <div class="tituloss">Instruções</div>
+    <div class="in">
+                {% if sessao|length > 0 %}
+        {% for detalhe in sessao %}
+        <li>{{ detalhe.instrucoes }} </li>
+        {% endfor %}
+        {% else %}
+        <li>Sem exercicios da sessao</li>
+        {% endif %}
+    </div>
   </div>
 
-        <div class="space"></div>
+        <div class="detail-info-containers" id="observations-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
+    <div class="tituloss">Materiais</div>
+    <div class="in">
+       {% if exercicios|length > 0 %}
+        {% for detalhe in exercicios %}
+        <li>{{ detalhe.materiais }} </li>
+        {% endfor %}
+        {% else %}
+        <li>Sem exercicios da sessao</li>
+        {% endif %}
+    </div>
+  </div>
+        <div class="space" style="background-color: transparent"></div>
   <div>Main</div>
     </div>
 
@@ -506,7 +536,43 @@ function hideContent(element){
     </div>
 
 </main>
+<footer>
+<!--    <div> Seta para baixo</div>-->
+<!--    <div style="font-size: 0;-->
+<!--	line-height: 0;-->
+<!--	width: 0;-->
+<!--	height: 0;-->
+<!--	border:solid transparent;-->
+<!--	border-width: 40px;-->
+<!--	border-top-color: #637f55;-->
+<!--	border-bottom-width:0;-->
+<!-- "> &#9661;-->
+
+<!--    &#5121;</div>-->
+    Painel de sessão
+    <div style="
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 0;
+	line-height: 0;
+	width: 0;
+	height: 0;
+	border:solid transparent;
+	border-width: 40px;
+	border-top-color: #bdbebd;
+	border-bottom-width:0;
+    float:center">
+    </div>
+
+    <!--        &dHar;-->
+<!--        &dArr;-->
+<!--        &#5121;-->
+<!--        &#9661;-->
+
+</footer>
 
 
+</body>
 
 {% endblock %}

@@ -9,29 +9,53 @@ class Evento(models.Model):
     class Meta:
         abstract = True
 
-
-"""class Lembrete(models.Model):
-    data = models.DateTimeField()
-    evento = models.ForeignKey(Evento)"""
-
-
 class Sessao(Evento):
     nome = models.CharField(max_length=10)
+    introducao = models.TextField(max_length=1000, null=True, blank=True)
+    instrucoes = models.TextField(max_length=1000, null=True, blank=True)
+    tema = models.CharField(max_length=1000, null=True, blank=True)
+    dinamizadores = models.CharField(max_length=1000, null=True, blank=True)
+    componentes = models.CharField(max_length=1000, null=True, blank=True)
+
     def __str__(self):
         return f'{self.nome}'
-    # class Meta:
-    #     abstract = True
+
+
+# Exercicio
+    # materiais = models.CharField(max_length=1000)
+    # fase = models.CharField(max_length=10, choices=FASE, null=True, blank=True)  Exercicio
+    # duracao = models.CharField(max_length=10, null=True, blank=True) Exercicio
+    # atividade = models.CharField(max_length=1000, null=True, blank=True)
+    # objetivo = models.CharField(max_length=1000, null=True, blank=True)
+
+# Sessao
+   # introducao = models.CharField(max_length=1000, null=True, blank=True)
+    # instrucoes = models.CharField(max_length=1000, null=True, blank=True)
+    # tema = models.CharField(max_length=1000, null=True, blank=True)
+    # dinamizadores = models.CharField(max_length=1000, null=True, blank=True)
+    # componentes = models.CharField(max_length=1000, null=True, blank=True)
 
 class Exercicio(models.Model):
+    INICIAL = 'I'
+    DESENVOLVIMENTO = 'D'
+    FINAL = 'F'
+    FASE = [
+        (INICIAL, "Inicial"),
+        (DESENVOLVIMENTO, "Desenvolvimento"),
+        (FINAL, "Final")
+    ]
+
     nome = models.CharField(max_length=100)
-    sessao = models.ManyToManyField(Sessao)
+    sessoes = models.ManyToManyField(Sessao, related_name='exercicios') # plural, pois um exercicio esta em varias sessoes!
     materiais = models.CharField(max_length=1000)
-    instrucao = models.CharField(max_length=1000)
+    # Extra ?
+    fase = models.CharField(max_length=10, choices=FASE, null=True, blank=True)
+    duracao = models.CharField(max_length=10,null=True, blank=True)
+    atividade = models.TextField(max_length=1000, null=True, blank=True)
+    objetivo = models.TextField(max_length=1000, null=True, blank=True)
+
     def __str__(self):
         return f'{self.nome}'
-
-# muitos tipos de utilizadores!
-# cuidador tem paciente(es) e grupo. paciente tem cuidador(es) e grupo. dinamizador(es) tem grupo(s).
 
 class Grupo(models.Model):
     # participantes = models.ManyToManyField(Participante,related_name='grupos')
@@ -47,7 +71,6 @@ class GrupoCare(Grupo):
     def __str__(self):
         return f'{self.nome}'
 
-
 class Utilizador (models.Model):
     nome = models.CharField(max_length=20)
     class Meta:
@@ -60,18 +83,15 @@ class Cuidador(Utilizador):
     def __str__(self):
         return f'{self.nome}'
 
-
 class Mentor(Utilizador):
     grupoCare = models.ManyToManyField(GrupoCare, blank=True, related_name='mentores')
     def __str__(self):
         return f'{self.nome}'
 
-
 class DinamizadorConvidado(Utilizador):
     grupoCare = models.ManyToManyField(GrupoCare, blank=True, related_name='dinamizadores')
     def __str__(self):
         return f'{self.nome}'
-
 
 ###################################  COG ########################
 

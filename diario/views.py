@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import GrupoCare, GrupoCog, GrupoAvalia, Participante, Nota, Partilha,Informacoes,PartilhaGrupo,Respostas,Presenca,NotaGrupo,Sessao
+from .models import GrupoCare, GrupoCog, GrupoAvalia, Participante, Nota, Partilha,Informacoes,PartilhaGrupo,Respostas,Presenca,NotaGrupo,Sessao,Exercicio
 from django.http import HttpResponse
 from .forms import NotaForm, PartilhaForm,InformacoesForm,RespostasForm,PartilhaGrupoForm,PresencaForm,NotaGrupoForm
 
@@ -24,11 +24,18 @@ def view_participantes(request):
 def view_diario(request):
 
     group_id = 1
-    sessao_id=1
+    grupo = GrupoCog.objects.get(id=group_id)
+
+    sessao_id = 1
+    sessao = Sessao.objects.get(id=sessao_id)
+
+
+
     contexto = {
         'participantes': Participante.objects.filter(grupoCog=group_id),
         'grupo': GrupoCog.objects.get(id=group_id),
-        'detalhes': Sessao.objects.get(id=sessao_id)
+        'exercicios': sessao.exercicios.all(),
+        'sessao': Sessao.objects.filter(id=sessao_id)
     }
 
     return render(request, "diario/diario.html", contexto)
