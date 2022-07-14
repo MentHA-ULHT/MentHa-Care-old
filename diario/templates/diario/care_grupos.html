@@ -14,20 +14,31 @@ font-weight: 600;
 <!--    sessao-->
     {% for detalhe in sessao %}
     <tr>
+        {% if detalhe.nome|length > 0 %}
         <td colspan="8" style="background-color: gray; text-align: center;  padding: 10px;"> {{ detalhe.nome }} </td>
+        {% endif %}
     </tr>
     <tr>
         <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Tema</td>
+        {% if detalhe.tema|length > 0 %}
         <td colspan="7" style="background-color: white; text-align: left;  padding: 10px;"> {{ detalhe.tema }} </td>
-    </tr>
+            {% else %}
+        <td colspan="7"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}    </tr>
     <tr>
         <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Dinamizadores</th>
+        {% if detalhe.dinamizadores|length > 0 %}
         <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{ detalhe.dinamizadores }} </td>
-    </tr>
+            {% else %}
+        <td colspan="7"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}    </tr>
     <tr>
         <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Componentes</th>
+        {% if detalhe.componentes|length > 0 %}
         <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{ detalhe.componentes }} </td>
-    </tr>
+            {% else %}
+        <td colspan="7"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}    </tr>
     {% endfor %}
 <!--    seccao objetivos e restante info da sessao-->
         <tr>
@@ -44,11 +55,24 @@ font-weight: 600;
         <tr>
 
         <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Inicial</td>
+            {% if detalhe.objetivo|length > 0 %}
         <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.objetivo }}</td>
+            {% else %}
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}            {% if detalhe.atividade|length > 0 %}
         <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.atividade }}</td>
+            {% else %}
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}            {% if detalhe.materiais|length > 0 %}
         <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.materiais }}</td>
+            {% else %}
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}
+            {% if detalhe.duracao|length > 0 %}
         <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.duracao }}</td>
-    </tr>
+            {% else %}
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}    </tr>
 {% endif %}
 <!--    parte desenvolvimento-->
 {% endfor %}
@@ -57,11 +81,24 @@ font-weight: 600;
     {% if detalhe.fase == 'D' %}
     <tr>
         <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Desenvolvimento</td>
+            {% if detalhe.objetivo|length > 0 %}
         <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.objetivo }}</td>
+            {% else %}
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}            {% if detalhe.atividade|length > 0 %}
         <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.atividade }}</td>
+            {% else %}
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}            {% if detalhe.materiais|length > 0 %}
         <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.materiais }}</td>
+            {% else %}
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}
+            {% if detalhe.duracao|length > 0 %}
         <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.duracao }}</td>
-    </tr>
+            {% else %}
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}    </tr>
 {% endif %}
 {% endfor %}
 <!--    parte final-->
@@ -70,11 +107,24 @@ font-weight: 600;
      <tr>
 
         <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Final</td>
+            {% if detalhe.objetivo|length > 0 %}
         <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.objetivo }}</td>
+            {% else %}
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}            {% if detalhe.atividade|length > 0 %}
         <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.atividade }}</td>
+            {% else %}
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}            {% if detalhe.materiais|length > 0 %}
         <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.materiais }}</td>
+            {% else %}
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}
+            {% if detalhe.duracao|length > 0 %}
         <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.duracao }}</td>
-    </tr>
+            {% else %}
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; "> </td>
+            {% endif %}    </tr>
 {% endif %}
 {% endfor %}
 </table>
