@@ -230,10 +230,11 @@ position:relative;
 background-color: red;
 }
 .in{
+display:none;
 position:absolute;
 background-color: whitesmoke;
 z-index:10;
-width:calc(100% - 10px);
+width:calc(100% - 20px);
 top: calc(100%);
 left:0px;
 padding:10px 10px 10px 10px;
@@ -362,21 +363,7 @@ function hideContent(element){
 
 
 
-        function myFunction() {
-          document.querySelectorAll('div.titulo').forEach(d=>{
 
-      d.onclick= () => {
-        if(d.nextElementSibling.style.display=='block'){
-          d.nextElementSibling.style.display='none'
-        }
-        else{
-           d.nextElementSibling.style.display='block';
-
-        }
-      };
-    });
-
-        }
 
         /***************************************************************************/
         /********** DOMContentLoaded ***********************************************/
@@ -449,10 +436,6 @@ function hideContent(element){
             return false;
         }
 
-
-
-
-
 </script>
 {% endblock %}
 
@@ -462,49 +445,49 @@ function hideContent(element){
 
 
     <div id="esq">
-        <div class="detail-info-containers" id="information-container" onmouseover="showContent(this)"
-             onmouseout="hideContent(this)">
+        <div class="detail-info-containers" id="information-container" onmouseout="hideContent(this)" onmouseover="showContent(this)">
             <div class="tituloss">Introdução</div>
             <div class="in">
                 {% if sessao|length > 0 %}
                 {% for detalhe in sessao %}
-                <li>{{ detalhe.introducao }}</li>
-                <!--        <li>{{ detalhe.materiais }} </li>-->
-                <!--        <li>{{ detalhe.sessao }} </li>-->
-                <!--        <li>{{ detalhe.nome }} </li>-->
+                {{ detalhe.introducao }}
+
                 {% endfor %}
                 {% else %}
-                <li>Sem exercicios da sessao</li>
+                Sem exercicios da sessao
                 {% endif %}
 
 
             </div>
         </div>
 
-        <div class="detail-info-containers" id="materials-container" onmouseover="showContent(this)"
-             onmouseout="hideContent(this)">
+        <div class="detail-info-containers" id="materials-container" onmouseout="hideContent(this)" onmouseover="showContent(this)"
+             >
             <div class="tituloss">Instruções</div>
             <div class="in">
                 {% if sessao|length > 0 %}
                 {% for detalhe in sessao %}
-                <li>{{ detalhe.instrucoes }}</li>
+                {{ detalhe.instrucoes }}
                 {% endfor %}
                 {% else %}
-                <li>Sem exercicios da sessao</li>
+                Sem exercicios da sessao
                 {% endif %}
             </div>
         </div>
 
-        <div class="detail-info-containers" id="observations-container" onmouseover="showContent(this)"
-             onmouseout="hideContent(this)">
+        <div class="detail-info-containers" id="observations-container" onmouseout="hideContent(this)" onmouseover="showContent(this)"
+             >
             <div class="tituloss">Materiais</div>
             <div class="in">
                 {% if exercicios|length > 0 %}
                 {% for detalhe in exercicios %}
-                <li>{{ detalhe.materiais }}</li>
+                {% if detalhe.materiais|length > 0 %}
+                {{ detalhe.materiais }}
+                <br>
+                {% endif %}
                 {% endfor %}
                 {% else %}
-                <li>Sem exercicios da sessao</li>
+                Sem exercicios da sessao
                 {% endif %}
             </div>
         </div>
@@ -514,76 +497,74 @@ function hideContent(element){
             <!-- rowspan (coluna) or    colspan (linha)        -->
 
 
-            <table border="3" id="q4">
-                <tr>
-                    <th colspan="8">Sessão Sessão Sessão Sessão Sessão Sessão Sessão Sessão Sessão Sessão </th>
-                </tr>
-                <tr>
-                    <th colspan="4">tema </th>
-                    <th colspan="4">cuidadiahduahiufefj aishd iaush suifhsujhf iuh ASD HUIASHFUI Haihsf iUAH </th>
-                </tr>
-                <tr>
-                    <th colspan="4">dinamizadores </th>
-                    <th colspan="4">1 punheteada e uma bate uihsbas </th>
+<table border="1" id="q5" style="width:100%; padding: 15px">
+<!--    sessao-->
+    {% for detalhe in sessao %}
+    <tr>
+        <td colspan="8" style="background-color: gray; text-align: center;  padding: 10px;"> {{ detalhe.nome }} </td>
+    </tr>
+    <tr>
+        <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Tema</td>
+        <td colspan="7" style="background-color: white; text-align: left;  padding: 10px;"> {{ detalhe.tema }} </td>
+    </tr>
+    <tr>
+        <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Dinamizadores</th>
+        <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{ detalhe.dinamizadores }} </td>
+    </tr>
+    <tr>
+        <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Componentes</th>
+        <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{ detalhe.componentes }} </td>
+    </tr>
+    {% endfor %}
+<!--    seccao objetivos e restante info da sessao-->
+        <tr>
+        <td colspan="1" style="background-color: white; width:250px;"></td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">Objetivo(s)</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">Atividade(s)</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">Materiais</td>
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">Duração</td>
+    </tr>
+<!--    exercicio -->
+<!--    parte inicial-->
+    {% for detalhe in exercicios %}
+    {% if detalhe.fase == 'I' %}
+        <tr>
 
-                </tr>
-                <tr>
-                    <th colspan="4">componentes </th>
-                    <th colspan="4">educativa e cultural </th>
-                </tr>
-                <tr>
-                    <th colspan="1"> </th>
-                    <th colspan="2">Objetivo(s) </th>
-                    <th colspan="2">Atividade(s) </th>
-                    <th colspan="2">Materiais </th>
-                    <th colspan="1">Duração </th>
-                </tr>
-                <tr>
-                    <th colspan="1">fase inicial </th>
-                </tr>
-                <tr>
-                    <th colspan="6">fase desenvolvimento </th>
-                </tr>
-                <tr>
-                    <th colspan="6">fase final </th>
-                </tr>
+        <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Inicial</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.objetivo }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.atividade }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.materiais }}</td>
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.duracao }}</td>
+    </tr>
+{% endif %}
+<!--    parte desenvolvimento-->
+{% endfor %}
+        {% for detalhe in exercicios %}
 
-                <tr>
-                    <th colspan="3" style="background-color: blue">Caderno</th>
-                    <th>Caderno</th>
-                    <th>Caderno</th>
-                    <th>Caderno</th>
+    {% if detalhe.fase == 'D' %}
+    <tr>
+        <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Desenvolvimento</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.objetivo }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.atividade }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.materiais }}</td>
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.duracao }}</td>
+    </tr>
+{% endif %}
+{% endfor %}
+<!--    parte final-->
+        {% for detalhe in exercicios %}
+    {% if detalhe.fase == 'F' %}
+     <tr>
 
-                </tr>
-                {% for participante in participantes %}
-                <div>
-                    <tr>
-                        <td>{{participante}}</td>
-                        <td>
-                            <input type="radio" data-participante="{{participante.id}}" value="online"
-                                   name="{{participante.id}}" {% if participante.online %} checked {% endif %}>
-                        </td>
-                        <td>
-                            <input type="radio" data-participante="{{participante.id}}" value="presencial"
-                                   name="{{participante.id}}" {% if participante.presencial %} checked {% endif %}>
-                        </td>
-                        <td>
-                            <input type="radio" data-participante="{{participante.id}}" value="naoVeio"
-                                   name="{{participante.id}}" {% if participante.naoVeio %} checked {% endif %}>
-                        </td>
-                        <td>
-                            <input type="radio" data-participante="{{participante.id}}" value="caderno"
-                                   name="{{participante.id}}+1">
-                        </td>
-                        <td>
-                            <input type="radio" data-participante="{{participante.id}}" value="app"
-                                   name="{{participante.id}}+1">
-                        </td>
-                    </tr>
-                </div>
-                {% endfor %}
-            </table>
-
+        <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Final</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.objetivo }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.atividade }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.materiais }}</td>
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.duracao }}</td>
+    </tr>
+{% endif %}
+{% endfor %}
+</table>
         </div>
     </div>
 
