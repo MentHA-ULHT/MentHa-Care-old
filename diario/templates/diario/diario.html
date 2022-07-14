@@ -4,8 +4,8 @@
 {% block style %}
 
 nav a:nth-child(5) {
-    color: black;
-    font-weight: 600;
+color: black;
+font-weight: 600;
 }
 
 
@@ -14,18 +14,18 @@ nav a:nth-child(5) {
 /***********************************************************/
 
 @media (max-width: 999px) {
-    main {
-        display:grid;
-        grid-template-columns: 1fr;
-    }
+main {
+display:grid;
+grid-template-columns: 1fr;
+}
 
 }
 
 @media (min-width: 1000px) {
-    main {
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-    }
+main {
+display:grid;
+grid-template-columns: 1fr 1fr;
+}
 
 }
 
@@ -184,22 +184,19 @@ display
 }
 
 
-
 <!-- Teste parte de baixo -->
 #footer {
-  background-color: #777;
-  padding: 10px;
-  text-align: center;
+background-color: #777;
+padding: 10px;
+text-align: center;
 
 }
 footer {
-  background-color: transparent;
-  padding: 10px;
-  text-align: center;
+background-color: transparent;
+padding: 10px;
+text-align: center;
 
 }
-
-
 
 
 /***********************************************************/
@@ -207,42 +204,42 @@ footer {
 /***********************************************************/
 
 #esq {
-  float: left;
-  padding: 1em;
-  display: grid;
-  gap: 1em;
-  grid-template-rows: 2em 2em 2em 4em 1fr;
+float: left;
+padding: 1em;
+display: grid;
+gap: 1em;
+grid-template-rows: 2em 2em 2em 4em 1fr;
 
 }
 
 
 #esq > * {
-  background: whitesmoke;
-  padding: 0.3em;
-  border:0.01em;
-  border-radius:5px;
-  border-style:solid;
-  border-color: transparent;
+background: whitesmoke;
+padding: 0.3em;
+border:0.01em;
+border-radius:5px;
+border-style:solid;
+border-color: transparent;
 
 }
 .detail-info-containers{
-  position:relative;
+position:relative;
 
 }
 .space{
-    background-color: red;
+background-color: red;
 }
 .in{
-  position:absolute;
-  background-color: whitesmoke;
-  z-index:10;
-  width:calc(100% - 10px);
-  top: calc(100%);
-  left:0px;
-  padding:10px 10px 10px 10px;
+position:absolute;
+background-color: whitesmoke;
+z-index:10;
+width:calc(100% - 10px);
+top: calc(100%);
+left:0px;
+padding:10px 10px 10px 10px;
 }
 .tituloss{
-  background-color: transparent;
+background-color: transparent;
 }
 {% endblock %}
 
@@ -454,6 +451,8 @@ function hideContent(element){
 
 
 
+
+
 </script>
 {% endblock %}
 
@@ -462,55 +461,133 @@ function hideContent(element){
 <main>
 
 
-    <div id="esq" >
-        <div class="detail-info-containers" id="information-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
-    <div class="tituloss">Introdução</div>
-    <div class="in">
-           {% if sessao|length > 0 %}
-        {% for detalhe in sessao %}
-        <li>{{ detalhe.introducao }} </li>
-<!--        <li>{{ detalhe.materiais }} </li>-->
-<!--        <li>{{ detalhe.sessao }} </li>-->
-<!--        <li>{{ detalhe.nome }} </li>-->
-        {% endfor %}
-        {% else %}
-        <li>Sem exercicios da sessao</li>
-        {% endif %}
-
-
-    </div>
-  </div>
-
-  <div class="detail-info-containers" id="materials-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
-    <div class="tituloss">Instruções</div>
-    <div class="in">
+    <div id="esq">
+        <div class="detail-info-containers" id="information-container" onmouseover="showContent(this)"
+             onmouseout="hideContent(this)">
+            <div class="tituloss">Introdução</div>
+            <div class="in">
                 {% if sessao|length > 0 %}
-        {% for detalhe in sessao %}
-        <li>{{ detalhe.instrucoes }} </li>
-        {% endfor %}
-        {% else %}
-        <li>Sem exercicios da sessao</li>
-        {% endif %}
-    </div>
-  </div>
+                {% for detalhe in sessao %}
+                <li>{{ detalhe.introducao }}</li>
+                <!--        <li>{{ detalhe.materiais }} </li>-->
+                <!--        <li>{{ detalhe.sessao }} </li>-->
+                <!--        <li>{{ detalhe.nome }} </li>-->
+                {% endfor %}
+                {% else %}
+                <li>Sem exercicios da sessao</li>
+                {% endif %}
 
-        <div class="detail-info-containers" id="observations-container" onmouseover="showContent(this)" onmouseout="hideContent(this)">
-    <div class="tituloss">Materiais</div>
-    <div class="in">
-       {% if exercicios|length > 0 %}
-        {% for detalhe in exercicios %}
-        <li>{{ detalhe.materiais }} </li>
-        {% endfor %}
-        {% else %}
-        <li>Sem exercicios da sessao</li>
-        {% endif %}
-    </div>
-  </div>
+
+            </div>
+        </div>
+
+        <div class="detail-info-containers" id="materials-container" onmouseover="showContent(this)"
+             onmouseout="hideContent(this)">
+            <div class="tituloss">Instruções</div>
+            <div class="in">
+                {% if sessao|length > 0 %}
+                {% for detalhe in sessao %}
+                <li>{{ detalhe.instrucoes }}</li>
+                {% endfor %}
+                {% else %}
+                <li>Sem exercicios da sessao</li>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="detail-info-containers" id="observations-container" onmouseover="showContent(this)"
+             onmouseout="hideContent(this)">
+            <div class="tituloss">Materiais</div>
+            <div class="in">
+                {% if exercicios|length > 0 %}
+                {% for detalhe in exercicios %}
+                <li>{{ detalhe.materiais }}</li>
+                {% endfor %}
+                {% else %}
+                <li>Sem exercicios da sessao</li>
+                {% endif %}
+            </div>
+        </div>
         <div class="space" style="background-color: transparent"></div>
-  <div>Main</div>
+        <div>Main
+
+            <!-- rowspan (coluna) or    colspan (linha)        -->
+
+
+            <table border="3" id="q4">
+                <tr>
+                    <th colspan="8">Sessão Sessão Sessão Sessão Sessão Sessão Sessão Sessão Sessão Sessão </th>
+                </tr>
+                <tr>
+                    <th colspan="4">tema </th>
+                    <th colspan="4">cuidadiahduahiufefj aishd iaush suifhsujhf iuh ASD HUIASHFUI Haihsf iUAH </th>
+                </tr>
+                <tr>
+                    <th colspan="4">dinamizadores </th>
+                    <th colspan="4">1 punheteada e uma bate uihsbas </th>
+
+                </tr>
+                <tr>
+                    <th colspan="4">componentes </th>
+                    <th colspan="4">educativa e cultural </th>
+                </tr>
+                <tr>
+                    <th colspan="1"> </th>
+                    <th colspan="2">Objetivo(s) </th>
+                    <th colspan="2">Atividade(s) </th>
+                    <th colspan="2">Materiais </th>
+                    <th colspan="1">Duração </th>
+                </tr>
+                <tr>
+                    <th colspan="1">fase inicial </th>
+                </tr>
+                <tr>
+                    <th colspan="6">fase desenvolvimento </th>
+                </tr>
+                <tr>
+                    <th colspan="6">fase final </th>
+                </tr>
+
+                <tr>
+                    <th colspan="3" style="background-color: blue">Caderno</th>
+                    <th>Caderno</th>
+                    <th>Caderno</th>
+                    <th>Caderno</th>
+
+                </tr>
+                {% for participante in participantes %}
+                <div>
+                    <tr>
+                        <td>{{participante}}</td>
+                        <td>
+                            <input type="radio" data-participante="{{participante.id}}" value="online"
+                                   name="{{participante.id}}" {% if participante.online %} checked {% endif %}>
+                        </td>
+                        <td>
+                            <input type="radio" data-participante="{{participante.id}}" value="presencial"
+                                   name="{{participante.id}}" {% if participante.presencial %} checked {% endif %}>
+                        </td>
+                        <td>
+                            <input type="radio" data-participante="{{participante.id}}" value="naoVeio"
+                                   name="{{participante.id}}" {% if participante.naoVeio %} checked {% endif %}>
+                        </td>
+                        <td>
+                            <input type="radio" data-participante="{{participante.id}}" value="caderno"
+                                   name="{{participante.id}}+1">
+                        </td>
+                        <td>
+                            <input type="radio" data-participante="{{participante.id}}" value="app"
+                                   name="{{participante.id}}+1">
+                        </td>
+                    </tr>
+                </div>
+                {% endfor %}
+            </table>
+
+        </div>
     </div>
 
-   <div  class="direita">
+    <div class="direita">
         <div class="participantes">
             {% for participante in participantes %}
             <button data-id="{{ participante.id }}">{{ participante }}</button>
@@ -537,18 +614,7 @@ function hideContent(element){
 
 </main>
 <footer>
-<!--    <div> Seta para baixo</div>-->
-<!--    <div style="font-size: 0;-->
-<!--	line-height: 0;-->
-<!--	width: 0;-->
-<!--	height: 0;-->
-<!--	border:solid transparent;-->
-<!--	border-width: 40px;-->
-<!--	border-top-color: #637f55;-->
-<!--	border-bottom-width:0;-->
-<!-- "> &#9661;-->
 
-<!--    &#5121;</div>-->
     Painel de sessão
     <div style="
     margin-left: auto;
@@ -566,9 +632,9 @@ function hideContent(element){
     </div>
 
     <!--        &dHar;-->
-<!--        &dArr;-->
-<!--        &#5121;-->
-<!--        &#9661;-->
+    <!--        &dArr;-->
+    <!--        &#5121;-->
+    <!--        &#9661;-->
 
 </footer>
 

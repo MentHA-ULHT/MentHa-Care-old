@@ -2,45 +2,81 @@
 
 
 {% block style %}
-    nav a:nth-child(1) {
-        color: black;
-        font-weight: 600;
-    }
+nav a:nth-child(1) {
+color: black;
+font-weight: 600;
+}
 {% endblock %}
 
 {% block main %}
+<table border="1" id="q5" style="width:100%; padding: 15px">
+<!--    sessao-->
+    {% for detalhe in sessao %}
+    <tr>
+        <td colspan="8" style="background-color: gray; text-align: center;  padding: 10px;"> {{ detalhe.nome }} </td>
+    </tr>
+    <tr>
+        <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Tema</td>
+        <td colspan="7" style="background-color: white; text-align: left;  padding: 10px;"> {{ detalhe.tema }} </td>
+    </tr>
+    <tr>
+        <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Dinamizadores</th>
+        <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{ detalhe.dinamizadores }} </td>
+    </tr>
+    <tr>
+        <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Componentes</th>
+        <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{ detalhe.componentes }} </td>
+    </tr>
+    {% endfor %}
+<!--    seccao objetivos e restante info da sessao-->
+        <tr>
+        <td colspan="1" style="background-color: white; width:250px;"></td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">Objetivo(s)</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">Atividade(s)</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">Materiais</td>
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">Duração</td>
+    </tr>
+<!--    exercicio -->
+<!--    parte inicial-->
+    {% for detalhe in exercicios %}
+    {% if detalhe.fase == 'I' %}
+        <tr>
 
-    <h1>MentHA Care</h1>
+        <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Inicial</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.objetivo }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.atividade }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.materiais }}</td>
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.duracao }}</td>
+    </tr>
+{% endif %}
+<!--    parte desenvolvimento-->
+{% endfor %}
+        {% for detalhe in exercicios %}
 
-    <p>Grupos</p>
-    <ul>
-        {% for grupo in grupos %}
-        <li>
-            Nome: {{ grupo }}:
-            <ul>
-                <li>
-                    {% if grupo.mentores.all.count == 1 %}
-                    Mentor:
-                    {% else %}
-                    Mentores:
-                    {% endif %}
-                    <ul>
-                        {% for mentor in grupo.mentores.all %}
-                        <li>{{ mentor }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li>
-                    Participantes:
-                    <ul>
-                        {% for cuidador in grupo.cuidadores.all %}
-                        <li> {{ cuidador }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        {% endfor %}
-    </ul>
+    {% if detalhe.fase == 'D' %}
+    <tr>
+        <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Desenvolvimento</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.objetivo }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.atividade }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.materiais }}</td>
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.duracao }}</td>
+    </tr>
+{% endif %}
+{% endfor %}
+<!--    parte final-->
+        {% for detalhe in exercicios %}
+    {% if detalhe.fase == 'F' %}
+     <tr>
 
-    {% endblock %}
+        <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Final</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.objetivo }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.atividade }}</td>
+        <td colspan="2"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.materiais }}</td>
+        <td colspan="1"  style="background-color: white; text-align: center; padding: 10px; ">{{ detalhe.duracao }}</td>
+    </tr>
+{% endif %}
+{% endfor %}
+</table>
+
+
+{% endblock %}

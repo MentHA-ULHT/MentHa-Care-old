@@ -6,7 +6,19 @@ from .forms import NotaForm, PartilhaForm,InformacoesForm,RespostasForm,Partilha
 
 # Create your views here.
 def view_care_grupos(request):
-    contexto = {'grupos': GrupoCare.objects.all()}
+    group_id = 1
+    grupo = GrupoCog.objects.get(id=group_id)
+
+    sessao_id = 1
+    sessao = Sessao.objects.get(id=sessao_id)
+
+
+
+    contexto = {'grupos': GrupoCare.objects.all(),
+                'exercicios': sessao.exercicios.all(),
+                'sessao': Sessao.objects.filter(id=sessao_id)
+
+                }
     return render(request, "diario/care_grupos.html", contexto)
 
 def view_cog_grupos(request):

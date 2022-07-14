@@ -10,7 +10,7 @@ class Evento(models.Model):
         abstract = True
 
 class Sessao(Evento):
-    nome = models.CharField(max_length=10)
+    nome = models.CharField(max_length=100)
     introducao = models.TextField(max_length=1000, null=True, blank=True)
     instrucoes = models.TextField(max_length=1000, null=True, blank=True)
     tema = models.CharField(max_length=1000, null=True, blank=True)
@@ -19,21 +19,6 @@ class Sessao(Evento):
 
     def __str__(self):
         return f'{self.nome}'
-
-
-# Exercicio
-    # materiais = models.CharField(max_length=1000)
-    # fase = models.CharField(max_length=10, choices=FASE, null=True, blank=True)  Exercicio
-    # duracao = models.CharField(max_length=10, null=True, blank=True) Exercicio
-    # atividade = models.CharField(max_length=1000, null=True, blank=True)
-    # objetivo = models.CharField(max_length=1000, null=True, blank=True)
-
-# Sessao
-   # introducao = models.CharField(max_length=1000, null=True, blank=True)
-    # instrucoes = models.CharField(max_length=1000, null=True, blank=True)
-    # tema = models.CharField(max_length=1000, null=True, blank=True)
-    # dinamizadores = models.CharField(max_length=1000, null=True, blank=True)
-    # componentes = models.CharField(max_length=1000, null=True, blank=True)
 
 class Exercicio(models.Model):
     INICIAL = 'I'
@@ -44,10 +29,9 @@ class Exercicio(models.Model):
         (DESENVOLVIMENTO, "Desenvolvimento"),
         (FINAL, "Final")
     ]
-
     nome = models.CharField(max_length=100)
     sessoes = models.ManyToManyField(Sessao, related_name='exercicios') # plural, pois um exercicio esta em varias sessoes!
-    materiais = models.CharField(max_length=1000)
+    materiais = models.CharField(max_length=1000, null=True, blank=True)
     # Extra ?
     fase = models.CharField(max_length=10, choices=FASE, null=True, blank=True)
     duracao = models.CharField(max_length=10,null=True, blank=True)
