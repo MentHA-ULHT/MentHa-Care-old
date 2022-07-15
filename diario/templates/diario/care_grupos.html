@@ -11,6 +11,15 @@ div.voltar{
 }
 {% endblock %}
 
+
+
+<script>
+    const myArray = detalhe.data.split("às");
+        let word = myArray[1];
+
+</script>
+
+
 {% block main %}
 
 
@@ -37,7 +46,8 @@ div.voltar{
     {% for detalhe in sessao %}
     <tr>
         {% if detalhe.nome|length > 0 %}
-        <td colspan="8" style="background-color: gray; text-align: center;  padding: 10px;"> {{ detalhe.nome }} </td>
+
+        <td colspan="8" style="background-color: gray; text-align: center;  padding: 10px;"> {{ word }} </td>
         {% endif %}
     </tr>
     <tr>

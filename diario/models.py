@@ -24,6 +24,7 @@ class Sessao(Evento):
         (PORREALIZAR, "Por realizar"),
         (REALIZADO, "Realizado"),
     ]
+
     estado = models.CharField(max_length=20,choices=ESTADO, null=True, blank=True,default=PORREALIZAR)
     regime = models.CharField(max_length=20,choices=REGIME, null=True, blank=True,default=PRESENT)
     numeroSessao = models.CharField(max_length=10,null=True , blank=True)
