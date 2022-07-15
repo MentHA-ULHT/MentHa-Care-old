@@ -10,6 +10,23 @@ class Evento(models.Model):
         abstract = True
 
 class Sessao(Evento):
+    PRESENT = 'P'
+    ONLINE = 'O'
+    MISTO = 'M'
+    REGIME = [
+        (PRESENT, "Presencial"),
+        (ONLINE, "Online"),
+        (MISTO,"Misto")
+    ]
+    PORREALIZAR = 'PR'
+    REALIZADO = 'R'
+    ESTADO = [
+        (PORREALIZAR, "Por realizar"),
+        (REALIZADO, "Realizado"),
+    ]
+    estado = models.CharField(max_length=20,choices=ESTADO, null=True, blank=True,default=PORREALIZAR)
+    regime = models.CharField(max_length=20,choices=REGIME, null=True, blank=True,default=PRESENT)
+    numeroSessao = models.CharField(max_length=10,null=True , blank=True)
     nome = models.CharField(max_length=100)
     introducao = models.TextField(max_length=1000, null=True, blank=True)
     instrucoes = models.TextField(max_length=1000, null=True, blank=True)
@@ -119,6 +136,15 @@ class Nota(models.Model):
     def __str__(self):
         return f'{self.nota}'
 
+class NotaGrupo(models.Model):
+    grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE, null=True)
+    notaGrupo = models.TextField()
+    data = models.DateTimeField(auto_now_add=True, null=True)
+    # podemos ter alternativamente dois campos: criado, modificado sendo o segundo atualizado se modificada a nota
+    # https://stackoverflow.com/questions/1737017/django-auto-now-and-auto-now-add
+
+    def __str__(self):
+        return f'{self.notaGrupo}'
 
 class Partilha(models.Model):
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
@@ -127,6 +153,14 @@ class Partilha(models.Model):
 
     def __str__(self):
         return f'{self.partilha}'
+
+class PartilhaGrupo(models.Model):
+    grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
+    descricao = models.TextField()
+    data = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return f'{self.descricao}'
 
 class Informacoes(models.Model):
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
@@ -155,24 +189,6 @@ class GrupoAvalia(Grupo):
 
 
                     # Criacao da class para o grupo
-
-class NotaGrupo(models.Model):
-    grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE, null=True, blank=True)
-    descricao = models.TextField()
-    data = models.DateTimeField(auto_now_add=True, null=True)
-    # podemos ter alternativamente dois campos: criado, modificado sendo o segundo atualizado se modificada a nota
-    # https://stackoverflow.com/questions/1737017/django-auto-now-and-auto-now-add
-
-    def __str__(self):
-        return f'{self.descricao}'
-
-class PartilhaGrupo(models.Model):
-    grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)
-    descricao = models.TextField()
-    data = models.DateTimeField(auto_now_add=True, null=True)
-
-    def __str__(self):
-        return f'{self.descricao}'
 
 class InformacoesGrupo(models.Model):
     grupo = models.ForeignKey(GrupoCare, on_delete=models.CASCADE)

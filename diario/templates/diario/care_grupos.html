@@ -6,10 +6,32 @@ nav a:nth-child(1) {
 color: black;
 font-weight: 600;
 }
+div.voltar{
+  padding-left: 49%;
+}
 {% endblock %}
 
 {% block main %}
 
+
+    <a href="{% url 'diario' %}">
+        <div style="
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0;
+        line-height: 0;
+        width: 0;
+        height: 0;
+        border:solid transparent;
+        border-width: 50px;
+        border-bottom-color: #bdbebd;
+        border-top-width:0;
+        float:center">
+        </div>
+    </a>
+    <div class="voltar">
+        Voltar
+    </div>
 <table border="1" id="q5" style="width:100%; padding: 15px">
 <!--    sessao-->
     {% for detalhe in sessao %}

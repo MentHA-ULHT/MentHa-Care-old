@@ -10,12 +10,27 @@ class NotaForm(ModelForm):
             'nota': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma nota...'}),
         }
 
+class NotaGrupoForm(ModelForm):
+    class Meta:
+        model = NotaGrupo
+        fields = '__all__'
+        widgets = {
+            'notaGrupo': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma nota sobre o grupo...'}),
+        }
+
 class PartilhaForm(ModelForm):
     class Meta:
         model = Partilha
         fields = '__all__'
         widgets = {
             'partilha': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma partilha...'}),
+        }
+class PartilhaGrupoForm(ModelForm):
+    class Meta:
+        model = PartilhaGrupo
+        fields = '__all__'
+        widgets = {
+            'partilhaGrupo': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma partilha sobre o grupo...'}),
         }
 
 #Nova seccao
@@ -36,21 +51,8 @@ class RespostasForm(ModelForm):
             'Respostas': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma resposta...'}),
         }
 
-class NotaGrupoForm(ModelForm):
-    class Meta:
-        model = NotaGrupo
-        fields = '__all__'
-        widgets = {
-            'NotaGrupo': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma nota sobre o grupo...'}),
-        }
 
-class PartilhaGrupoForm(ModelForm):
-    class Meta:
-        model = PartilhaGrupo
-        fields = '__all__'
-        widgets = {
-            'partilhaGrupoForm': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma partilha sobre o grupo...'}),
-        }
+
 
 class PresencaForm(ModelForm):
     class Meta:

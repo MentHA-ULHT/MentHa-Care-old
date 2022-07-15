@@ -14,10 +14,47 @@ th {
   text-align: center;
 }
 
+
+
+
+
+div.detail-info-container1 > * {
+  padding:10px;
+  margin:5px;
+}
+.detail-info-container1{
+  position:relative;
+}
+.detalhe{
+  background-color: whitesmoke;
+  display:none;
+  position: absolute;
+  z-index:2;
+  width:calc(100% - 10px);
+  top: calc(100%);
+  left:0px;
+  padding:10px 10px 10px 10px;
+}
+.titulo{
+  background-color: transparent;
+  border:0.01em;
+  border-radius:5px;
+  border-style:solid;
+  border-color: #47B5C4;
+}
+
+.selectedButton{
+
+}
+.ignoredButton{
+  display
+}
+
+
 </style>
 
 {% block script %}
-    <script>
+<script>
 
         function sendInput(id, name, checked) {
             let data = new FormData();
@@ -43,42 +80,35 @@ th {
                 });
             });
 
+<!--document.querySelectorAll('div.titulo').forEach(d=>{-->
 
-
-
-<!--    funtion senForm(idPessoa, formId){-->
-<!--        let data = new FormData(document.getElementById(formId));-->
-<!--        fetch('diario_grupo/${idgrupo}', { method: "Post", body: data })-->
-<!--            .then(response => response.onclick=() =>-->
-<!--            response.dataset.participante)-->
-<!--            .then(-->
-
-
-
+<!--  d.onclick= function clicar(){-->
+<!--    if(d.nextElementSibling.style.display=='block'){-->
+<!--      d.nextElementSibling.style.display='none'-->
+<!--    }-->
+<!--    else{-->
+<!--       d.nextElementSibling.style.display='block';-->
 
 <!--    }-->
+<!--  };-->
+<!--});-->
+
+function showContent1(element){
+  element.style.display = "block";
+  document.querySelector("#" + element.id + " > .detalhe").style.display="block"
+  console.log(element.id);
+}
+
+function hideContent1(element){
+  document.querySelector("#" + element.id + " > .detalhe").style.display="none"
+}
 
 
-<!--    /***************************************************************************/-->
-<!--    /********** DOMContentLoaded ***********************************************/-->
-<!--    /***************************************************************************/-->
-
-<!--    document.addEventListener('DOMContentLoaded', function () {-->
-<!--        document.querySelectorAll("input").forEach(change => {-->
-<!--            change.onclick = () => {-->
-<!--            console.log("change")-->
-<!--                console.log(change.nome+-->
-<!--                input.dataset.participante);-->
-<!--         }-->
-<!--        });-->
-<!--    }-->
-
-<!--    document.querySelector('input[name='participacao']:checked').value;-->
 
 </script>
 {% endblock %}
 
-<div id="notas">
+<div id="notas" style="overflow: auto;">
     <!-- https://code-boxx.com/post-form-data-javascript-fetch/ -->
 
     <h2><b>Nova nota:</b></h2>
@@ -87,36 +117,37 @@ th {
     <input type="checkbox" id="vehicle1" name="escolha" value="geral">
     <label for="vehicle1">Geral</label>
 
-     <form id="notaForm" onsubmit='return sendForm({{ grupo_id }}, "notaForm");' method="post">
+    <form id="notaForm" onsubmit='return sendForm({{ grupo_id }}, "notaForm");' method="post">
         {% csrf_token %}
-        {{ notaForm.nota }}
+        {{ notaForm.notaGrupo }}
         <input type="hidden" name="grupo" value={{ grupo_id }}>
-         <button type="submit"  name="cancel">Cancelar nota</button>
-
-         <button type="submit" name="nota">Guardar nota</button>
+        <button type="submit" name="cancel">Cancelar nota</button>
+        <button type="submit" name="nota">Guardar nota</button>
 
     </form>
+
+
     <hr>
-    <h2><b>Lista das notas de grupo  {{grupo_id}}</b></h2>
+    <h2><b>Lista das notas de grupo {{grupo_id}}</b></h2>
 
     <ul>
         {% if notasGrupo|length > 0 %}
-            {% for nota in notasGrupo %}
-                <li>{{ nota }} </li>
-            {% endfor %}
+        {% for nota in notasGrupo %}
+        <li>{{ nota }}</li>
+        {% endfor %}
         {% else %}
-            <li>Sem notas</li>
+        <li>Sem notas</li>
         {% endif %}
     </ul>
 
 </div>
 
-<div id="partilhas" >
-     <h1>partilhas do grupo {{ grupo_id }}</h1>
+<div id="partilhas">
+    <h1>partilhas do grupo {{ grupo_id }}</h1>
 
-      <form id="partilhaForm" onsubmit='return sendForm({{ grupo_id }}, "partilhaGrupoForm");' method="post">
+    <form id="partilhaGrupoForm" onsubmit='return sendForm({{ grupo_id }}, "partilhaGrupoForm");' method="post">
         {% csrf_token %}
-        {{ partilhaGrupoForm.partilha }}
+        {{ partilhaGrupoForm.descricao }}
         <input type="hidden" name="grupo" value={{ grupo_id }}>
         <button type="submit" name="partilha">Guardar partilha</button>
     </form>
@@ -132,9 +163,9 @@ th {
     </ul>
 </div>
 
-<div id="presencas" >
+<div id="presencas">
 
-    <table border="3" id="q4" >
+    <table border="3" id="q4">
         <tr>
             <th rowspan="2">Participantes</th>
             <th rowspan="2">Online</th>
@@ -151,67 +182,52 @@ th {
             <tr>
                 <td>{{participante}}</td>
                 <td>
-                    <input type="radio"  data-participante="{{participante.id}}" value="online" name="{{participante.id}}" {% if participante.online %} checked {% endif %}>
+                    <input type="radio" data-participante="{{participante.id}}" value="online"
+                           name="{{participante.id}}" {% if participante.online %} checked {% endif %}>
                 </td>
                 <td>
-                    <input type="radio" data-participante="{{participante.id}}" value="presencial" name="{{participante.id}}" {% if participante.presencial %} checked {% endif %}>
+                    <input type="radio" data-participante="{{participante.id}}" value="presencial"
+                           name="{{participante.id}}" {% if participante.presencial %} checked {% endif %}>
                 </td>
                 <td>
-                    <input type="radio" data-participante="{{participante.id}}" value="naoVeio" name="{{participante.id}}" {% if participante.naoVeio %} checked {% endif %}>
+                    <input type="radio" data-participante="{{participante.id}}" value="naoVeio"
+                           name="{{participante.id}}" {% if participante.naoVeio %} checked {% endif %}>
                 </td>
                 <td>
-                    <input type="radio"  data-participante="{{participante.id}}" value="caderno" name="{{participante.id}}+1">
+                    <input type="radio" data-participante="{{participante.id}}" value="caderno"
+                           name="{{participante.id}}+1">
                 </td>
                 <td>
-                    <input type="radio" data-participante="{{participante.id}}" value="app" name="{{participante.id}}+1">
+                    <input type="radio" data-participante="{{participante.id}}" value="app"
+                           name="{{participante.id}}+1">
                 </td>
             </tr>
         </div>
         {% endfor %}
-</table>
+    </table>
 
 </div>
 
-<div id="informacoes" >
+<div id="informacoes">
 
-     <div class="detail-info-container" id="information-container"  onclick="myFunction()">
-        <div class="titulo">Detalhes</div>
-        <div class="infos">
-            quantas sessoes ja foram feitas!
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    <div class="detail-info-container1" id="information-container" onmouseover="showContent1(this)"
+         onmouseout="hideContent1(this)">
+        <div class="titulo">Informação</div>
+        <div class="detalhe">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
             deserunt mollit anim id est laborum.
         </div>
     </div>
 
-    <div class="detail-info-container" id="materials-container"  onclick="myFunction()">
-        <div class="titulo">Elementos do grupo</div>
-        <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
-        </div>
-    </div>
 
-    <div class="detail-info-container" id="observations-container"  onclick="myFunction()">
-        <div class="titulo">Info??</div>
-        <div class="infos">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
-        </div>
-    </div>
 </div>
 
 <!-- As respostas nao fazem parte do grupo -->
 <div id="respostas">
 
-     <h1>Respostas do grupo {{ grupo_id }}</h1>
+    <h1>Respostas do grupo {{ grupo_id }}</h1>
 
 
 </div>

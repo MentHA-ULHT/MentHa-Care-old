@@ -33,6 +33,28 @@ def view_participantes(request):
     contexto = {'grupos': GrupoCog.objects.all(), 'participantes': Participante.objects.all()}
     return render(request, "diario/participantes.html", contexto)
 
+
+def view_presencas_sessao(request):
+
+    group_id = 1
+    grupo = GrupoCog.objects.get(id=group_id)
+
+    sessao_id = 1
+    sessao = Sessao.objects.get(id=sessao_id)
+
+
+
+    contexto = {
+        'participantes': Participante.objects.filter(grupoCog=group_id),
+        'grupo': GrupoCog.objects.get(id=group_id),
+        'exercicios': sessao.exercicios.all(),
+        'sessao': Sessao.objects.filter(id=sessao_id)
+    }
+
+    return render(request, "diario/presencas_sessao.html", contexto)
+
+
+
 def view_diario(request):
 
     group_id = 1
@@ -75,6 +97,14 @@ def view_diario_participante(request, id):
     return render(request, "diario/diario_participante.html", context)
 
 def view_diario_grupo(request, idGrupo):
+    form = NotaGrupoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    form = RespostasForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
 
     context = {
         'participantes': Participante.objects.filter(grupoCog=idGrupo).order_by('nome'),
