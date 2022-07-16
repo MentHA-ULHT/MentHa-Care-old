@@ -12,4 +12,6 @@ urlpatterns = [
     path('diario_grupo/<int:idGrupo>', views.view_diario_grupo, name='diario_grupo'),
     path('presencas_sessao', views.view_presencas_sessao, name='presencas_sessao'),
 
+    path('lista_sessoes', views.view_lista_sessoes, name='lista_sessoes'),
+
 ]

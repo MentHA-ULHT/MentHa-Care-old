@@ -1,0 +1,122 @@
+<style>
+div.text {
+  background-color: #87CEEB;
+  border-radius: 20px 20px;
+  width: 70%;
+  padding: 15px;
+  margin: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 85px;
+  font-size: 30px;
+  color:black;
+  text-align: center;
+
+}
+div.tab1{
+  background-color: #87CEEB;
+  border-radius: 20px 20px;
+  width: 75%;
+  position: relative;
+  padding: 15px;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+    }
+
+div.buttonConfirm {
+    border-color: #5F9EA0;
+    padding-top: 19%;
+    padding-left: 75%;
+}
+
+
+
+
+
+
+
+
+
+</style>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de sessões</title>
+</head>
+<body>
+
+<main>
+    <div class="text">
+        Lista de sessões
+    </div>
+
+
+    <div class="tab1">
+        <table border="0" id="q4" ALIGN=center cellspacing="15" cellpadding="10" style="width:95%;">
+            <tr>
+                <th rowspan="1">Sessão</th>
+                <th rowspan="1">Nome</th>
+                <th rowspan="1">Data e hora</th>
+                <th rowspan="1">Regime</th>
+                <th colspan="1">Estado</th>
+                <th colspan="1">Presenças</th>
+                <th colspan="1">Detalhes</th>
+
+            </tr>
+            {% for detalhe in gruposessao %}
+            <tr>
+                <td colspan="1" style="background-color: white; text-align: center; width:250px;">
+                    Sessão {{ detalhe.numeroSessao }}
+                </td>
+                <td colspan="1" style="background-color: white; text-align: center; padding: 10px;width:355px">
+                    {{ detalhe.nome }}
+                </td>
+                <td colspan="1" style="background-color: white; text-align: center;padding: 18px;width:355px ">
+                    {{ detalhe.data }}
+                </td>
+                <td colspan="1" style="background-color: white; text-align: center; padding: 18px; ">
+
+                    {% if detalhe.regime == 'P' %}
+                    Presencial
+                    {% endif %}
+                    {% if detalhe.regime == 'O' %}
+                    Online
+                    {% endif %}
+                    {% if detalhe.regime == 'M' %}
+                    Misto
+                    {% endif %}
+
+                </td>
+                <td colspan="1" style="background-color: white; text-align: center; padding: 18px;width:150px; ">
+                    {% if detalhe.estado == 'PR' %}
+                    Por realizar
+                    {% endif %}
+                    {% if detalhe.estado == 'R' %}
+                    Realizado
+                    {% endif %}
+                </td>
+                <td colspan="1" style="background-color: white; text-align: center; padding: 18px; width:150px;">
+                     <a href="{% url 'presencas_sessao' %}" >
+                    <input type="button" value="Presenças" -->
+                  </a>
+                </td>
+
+                <td colspan="1" style="background-color: white; text-align: center; padding: 18px; ">
+                     <a href="{% url 'care_grupos' %}" >
+                    <input type="button" value="Detalhes" -->
+                </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+</main>
+
+</body>
+</html>

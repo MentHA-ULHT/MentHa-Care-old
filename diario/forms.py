@@ -1,7 +1,6 @@
 from django.forms import ModelForm, TextInput, Textarea
 from .models import Nota, Partilha,Informacoes,Respostas,NotaGrupo,PartilhaGrupo,Presenca
 
-
 class NotaForm(ModelForm):
     class Meta:
         model = Nota
@@ -25,6 +24,7 @@ class PartilhaForm(ModelForm):
         widgets = {
             'partilha': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma partilha...'}),
         }
+
 class PartilhaGrupoForm(ModelForm):
     class Meta:
         model = PartilhaGrupo
@@ -50,9 +50,6 @@ class RespostasForm(ModelForm):
         widgets = {
             'Respostas': Textarea(attrs={'rows': 3, 'placeholder': 'Escreva uma resposta...'}),
         }
-
-
-
 
 class PresencaForm(ModelForm):
     class Meta:

@@ -3,6 +3,23 @@ from datetime import datetime
 
 ##### Eventos ######################################
 
+class Grupo(models.Model):
+    # participantes = models.ManyToManyField(Participante,related_name='grupos')
+
+    nome = models.CharField(max_length=20)
+    def __str__(self):
+        return f'{self.nome}'
+    class Meta:
+        abstract = True
+
+
+class GrupoCare(Grupo):
+    def __str__(self):
+        return f'{self.nome}'
+
+class GrupoCog(Grupo):
+    def __str__(self):
+        return f'{self.nome}'
 
 class Evento(models.Model):
     data = models.DateTimeField()
@@ -25,6 +42,7 @@ class Sessao(Evento):
         (REALIZADO, "Realizado"),
     ]
 
+    sessaoGrupo = models.ManyToManyField(GrupoCare, blank=True, related_name='sessaodogrupo')
     estado = models.CharField(max_length=20,choices=ESTADO, null=True, blank=True,default=PORREALIZAR)
     regime = models.CharField(max_length=20,choices=REGIME, null=True, blank=True,default=PRESENT)
     numeroSessao = models.CharField(max_length=10,null=True , blank=True)
@@ -59,19 +77,6 @@ class Exercicio(models.Model):
     def __str__(self):
         return f'{self.nome}'
 
-class Grupo(models.Model):
-    # participantes = models.ManyToManyField(Participante,related_name='grupos')
-
-    nome = models.CharField(max_length=20)
-    def __str__(self):
-        return f'{self.nome}'
-    class Meta:
-        abstract = True
-
-
-class GrupoCare(Grupo):
-    def __str__(self):
-        return f'{self.nome}'
 
 class Utilizador (models.Model):
     nome = models.CharField(max_length=20)
@@ -97,16 +102,10 @@ class DinamizadorConvidado(Utilizador):
 
 ###################################  COG ########################
 
-class GrupoCog(Grupo):
-    def __str__(self):
-        return f'{self.nome}'
-
-
 class Facilitador(Utilizador):
     grupoCog = models.ManyToManyField(GrupoCog, blank=True, related_name='facilitadores')
     def __str__(self):
         return f'{self.nome}'
-
 
 class Auxiliar(Utilizador):
     grupoCog = models.ManyToManyField(GrupoCog, blank=True, related_name='auxiliares')
@@ -118,7 +117,6 @@ class Auxiliar(Utilizador):
 class Avaliador(Utilizador):
     def __str__(self):
         return f'{self.nome}'
-
 
 class Participante(Utilizador):
     grupoCog = models.ForeignKey(GrupoCog, on_delete=models.CASCADE, null=True, blank=True, related_name='participantes')
