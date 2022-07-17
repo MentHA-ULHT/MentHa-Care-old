@@ -51,8 +51,11 @@ div.buttonConfirm {
     <div class="text">
         Lista de sessões
     </div>
-
-
+    olaaa
+    {% for detalhe in sessoes %}
+        {{ detalhe }}
+    {% endfor %}
+    adeus
     <div class="tab1">
         <table border="0" id="q4" ALIGN=center cellspacing="15" cellpadding="10" style="width:95%;">
             <tr>
@@ -65,7 +68,7 @@ div.buttonConfirm {
                 <th colspan="1">Detalhes</th>
 
             </tr>
-            {% for detalhe in gruposessao %}
+            {% for detalhe in sessoes %}
             <tr>
                 <td colspan="1" style="background-color: white; text-align: center; width:250px;">
                     Sessão {{ detalhe.numeroSessao }}

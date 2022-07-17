@@ -41,8 +41,7 @@ class Sessao(Evento):
         (PORREALIZAR, "Por realizar"),
         (REALIZADO, "Realizado"),
     ]
-
-    sessaoGrupo = models.ManyToManyField(GrupoCare, blank=True, related_name='sessaodogrupo')
+    grupos = models.ManyToManyField(GrupoCare, blank=True, related_name='sessoes')
     estado = models.CharField(max_length=20,choices=ESTADO, null=True, blank=True,default=PORREALIZAR)
     regime = models.CharField(max_length=20,choices=REGIME, null=True, blank=True,default=PRESENT)
     numeroSessao = models.CharField(max_length=10,null=True , blank=True)
@@ -77,12 +76,10 @@ class Exercicio(models.Model):
     def __str__(self):
         return f'{self.nome}'
 
-
 class Utilizador (models.Model):
     nome = models.CharField(max_length=20)
     class Meta:
         abstract = True
-
 
 class Cuidador(Utilizador):
     grupoCare = models.ManyToManyField(GrupoCare, blank=True, related_name='cuidadores')
@@ -169,7 +166,6 @@ class Informacoes(models.Model):
     def __str__(self):
         return f'{self.informacoes}'
 
-
 class Respostas(models.Model):
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
     pergunta = models.CharField(null=True, blank=True, max_length=1)
@@ -178,7 +174,6 @@ class Respostas(models.Model):
 
     def __str__(self):
         return f'{self.respostas}'
-
 
 class GrupoAvalia(Grupo):
     avaliador = models.ForeignKey(Avaliador, on_delete=models.CASCADE)
@@ -196,8 +191,6 @@ class InformacoesGrupo(models.Model):
 
     def __str__(self):
         return f'{self.descricao}'
-
-
 
 class Presenca(models.Model):
     # Possibilidade de registar o motivo de noa ter ido a sessao

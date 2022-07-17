@@ -51,7 +51,9 @@ def view_lista_sessoes(request):
         'participantes': Participante.objects.filter(grupoCog=group_id),
         'grupo': GrupoCog.objects.get(id=group_id),
         'exercicios': sessao.exercicios.all(),
-        'gruposessao': gruposessa
+        'gruposessao': gruposessa,
+        'sessoes': GrupoCare.objects.get(id=group_id).sessoes.all(),
+
     }
 
     return render(request, "diario/lista_sessoes.html", contexto)
@@ -71,7 +73,7 @@ def view_presencas_sessao(request):
         'participantes': Participante.objects.filter(grupoCog=group_id),
         'grupo': GrupoCog.objects.get(id=group_id),
         'exercicios': sessao.exercicios.all(),
-        'sessao': Sessao.objects.filter(id=sessao_id)
+        'sessao': Sessao.objects.filter(id=sessao_id),
     }
 
     return render(request, "diario/presencas_sessao.html", contexto)
