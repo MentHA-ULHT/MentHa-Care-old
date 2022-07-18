@@ -1,5 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+
+.linha-vertical {
+  text-align: center;
+  color: #87CEEB;
+  background-color: transparent;
+  width: 50%;
+  float: left;
+  margin: 10px;
+  position: absolute;
+  margin-top: -50px;
+  margin-left: 120px;
+  height: 100%;/*Altura da linha*/
+  border-left: 2px solid;
+}
+
+.opcaoMenu1 {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 200px;
+  text-align: center;
+  font-size: 15px;
+  color:black;
+}
+
+.opcaoMenu2 {
+  width: 15px;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 250px;
+  text-align: center;
+  font-size: 15px;
+  color:black;
+}
+
+.opcaoMenu3 {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 330px;
+  text-align: center;
+  font-size: 15px;
+  color:black;
+}
+
+.opcaoMenu4 {
+
+}
+
+a:link {
+  text-decoration: none;
+}
+
+
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>MentHA</title>
@@ -88,8 +144,29 @@
     <a href="{% url 'participantes' %}">Participantes</a>
     <a href="{% url 'diario' %}">Diario</a>
 </nav>
+<main>
+    <div class="opcaoMenu1">
+    <a style="color:black; text-align: center;" href="{% url 'diario' %}">
+      Home
+    </a>
+</div>
+<div class="opcaoMenu2">
+    <a style="color:black; text-align: center;" href="{% url 'diario' %}">
+        Pagina Principal
+    </a>
+</div>
+<div class="opcaoMenu3">
+    <a style="color:black; text-align: center;" href="{% url 'diario' %}">
+        Calendario
+    </a>
+</div>
+<div class="linha-vertical">
 
+</div>
+</main>
 {% block main %}
+
+
 
 {% endblock %}
 
