@@ -13,7 +13,6 @@ div.voltar{
 
 {% block main %}
 
-
     <a href="{% url 'diario' %}">
         <div style="
         margin-left: auto;
@@ -29,9 +28,12 @@ div.voltar{
         float:center">
         </div>
     </a>
-    <div class="voltar">
-        Voltar
-    </div>
+        <a style="padding-left: 49%" href="{% url 'participantes' %}">
+            Voltar
+        </a>
+
+
+
 <table border="0" id="q5" style="width:80%;margin-left: auto;
         margin-right: auto; padding: 15px">
 <!--    sessao-->
@@ -152,6 +154,5 @@ div.voltar{
 {% endif %}
 {% endfor %}
 </table>
-
 
 {% endblock %}
