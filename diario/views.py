@@ -3,6 +3,12 @@ from .models import GrupoCare, GrupoCog, GrupoAvalia, Participante, Nota, Partil
 from django.http import HttpResponse
 from .forms import NotaForm, PartilhaForm,InformacoesForm,RespostasForm,PartilhaGrupoForm,PresencaForm,NotaGrupoForm
 
+def view_menu_esquerda(request):
+
+    context = {
+
+    }
+    return render(request,"diario/menu_esquerda.html",context)
 
 # Create your views here.
 def view_care_grupos(request):
@@ -33,9 +39,6 @@ def view_participantes(request):
     contexto = {'grupos': GrupoCog.objects.all(), 'participantes': Participante.objects.all()}
     return render(request, "diario/participantes.html", contexto)
 
-
-
-
 def view_lista_sessoes(request):
 
     group_id = 1
@@ -58,7 +61,6 @@ def view_lista_sessoes(request):
 
     return render(request, "diario/lista_sessoes.html", contexto)
 
-
 def view_presencas_sessao(request):
 
     group_id = 1
@@ -77,8 +79,6 @@ def view_presencas_sessao(request):
     }
 
     return render(request, "diario/presencas_sessao.html", contexto)
-
-
 
 def view_diario(request):
 

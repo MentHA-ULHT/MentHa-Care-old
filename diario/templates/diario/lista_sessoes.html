@@ -29,17 +29,21 @@ div.buttonConfirm {
     padding-top: 19%;
     padding-left: 75%;
 }
-
-
-
-
-
-
-
-
-
 </style>
 
+{% block script %}
+<script>
+
+    function sendForm(id,formId) {
+        let data = new FormData(document.getElementById(formId));
+        fetch(`care_grupos/`+ id, {method: "POST", body: data})
+            .then(response => response.text())
+            .then(text => document.querySelector('.botaoDetalhes').innerHTML = text)
+
+    }
+
+</script>
+{% endblock %}
 
 <head>
     <meta charset="UTF-8">
@@ -51,11 +55,11 @@ div.buttonConfirm {
     <div class="text">
         Lista de sessões
     </div>
-    olaaa
-    {% for detalhe in sessoes %}
-        {{ detalhe }}
-    {% endfor %}
-    adeus
+<!--    olaaa-->
+<!--    {% for detalhe in sessoes %}-->
+<!--        {{ detalhe }}-->
+<!--    {% endfor %}-->
+<!--    adeus-->
     <div class="tab1">
         <table border="0" id="q4" ALIGN=center cellspacing="15" cellpadding="10" style="width:95%;">
             <tr>
@@ -74,7 +78,7 @@ div.buttonConfirm {
                     Sessão {{ detalhe.numeroSessao }}
                 </td>
                 <td colspan="1" style="background-color: white; text-align: center; padding: 10px;width:355px">
-                    {{ detalhe.nome }}
+                    {{ detalhe.id }}
                 </td>
                 <td colspan="1" style="background-color: white; text-align: center;padding: 18px;width:355px ">
                     {{ detalhe.data }}
@@ -101,18 +105,18 @@ div.buttonConfirm {
                     {% endif %}
                 </td>
                 <td colspan="1" style="background-color: white; text-align: center; padding: 18px; width:150px;">
-                     <a href="{% url 'presencas_sessao' %}" >
+                     <a href="{% url 'care_grupos' detalhe.numeroSessao %}" >
                     <input type="button" value="Presenças" -->
                   </a>
                 </td>
-
                 <td colspan="1" style="background-color: white; text-align: center; padding: 18px; ">
-                     <a href="{% url 'care_grupos' %}" >
-                    <input type="button" value="Detalhes" -->
-                </a>
+                    <button class="botaoDetalhes" > Detalhes</button>
+
                 </td>
             </tr>
-
+<!--<a href="{% url 'care_grupos' %}" >-->
+<!-- <input type="button" value="Detalhes"-->
+<!--                    </a>-->
             {% endfor %}
         </table>
     </div>

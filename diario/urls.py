@@ -14,4 +14,6 @@ urlpatterns = [
 
     path('lista_sessoes', views.view_lista_sessoes, name='lista_sessoes'),
 
+    path('menu_esquerda', views.view_menu_esquerda, name='menu_esquerda'),
+
 ]
