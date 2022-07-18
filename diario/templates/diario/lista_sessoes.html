@@ -29,18 +29,21 @@ div.buttonConfirm {
     padding-top: 19%;
     padding-left: 75%;
 }
+
 </style>
 
 {% block script %}
 <script>
 
-    function sendForm(id,formId) {
-        let data = new FormData(document.getElementById(formId));
-        fetch(`care_grupos/`+ id, {method: "POST", body: data})
-            .then(response => response.text())
-            .then(text => document.querySelector('.botaoDetalhes').innerHTML = text)
+function descarregaInfoGrupo(idGrupo) {
+            /* vai buscar a informação do grupo id */
+            fetch('care_grupos/' + idGrupo)
+                .then(response => response.text())
+                .then(text => document.querySelector('.info').innerHTML = text)
 
-    }
+        }
+
+
 
 </script>
 {% endblock %}
@@ -52,77 +55,81 @@ div.buttonConfirm {
 <body>
 
 <main>
-    <div class="text">
-        Lista de sessões
+    <div class="info">
+
+
+        <div class="text" >
+            Lista de sessões
+        </div>
+        <!--    olaaa-->
+        <!--    {% for detalhe in sessoes %}-->
+        <!--        {{ detalhe }}-->
+        <!--    {% endfor %}-->
+        <!--    adeus-->
+        <div class="tab1">
+            <table border="0" id="q4" ALIGN=center cellspacing="15" cellpadding="10" style="width:95%;">
+                <tr>
+                    <th rowspan="1">Sessão</th>
+                    <th rowspan="1">Nome</th>
+                    <th rowspan="1">Data e hora</th>
+                    <th rowspan="1">Regime</th>
+                    <th colspan="1">Estado</th>
+                    <th colspan="1">Presenças</th>
+                    <th colspan="1">Detalhes</th>
+
+                </tr>
+                {% for detalhe in sessoes %}
+                <tr>
+                    <td colspan="1" style="background-color: white; text-align: center; width:250px;">
+                        Sessão {{ detalhe.numeroSessao }}
+                    </td>
+                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px;width:355px">
+                        {{ detalhe.nome }}
+                    </td>
+                    <td colspan="1" style="background-color: white; text-align: center;padding: 18px;width:355px ">
+                        {{ detalhe.data }}
+                    </td>
+                    <td colspan="1" style="background-color: white; text-align: center; padding: 18px; ">
+
+                        {% if detalhe.regime == 'P' %}
+                        Presencial
+                        {% endif %}
+                        {% if detalhe.regime == 'O' %}
+                        Online
+                        {% endif %}
+                        {% if detalhe.regime == 'M' %}
+                        Misto
+                        {% endif %}
+
+                    </td>
+                    <td colspan="1" style="background-color: white; text-align: center; padding: 18px;width:150px; ">
+                        {% if detalhe.estado == 'PR' %}
+                        Por realizar
+                        {% endif %}
+                        {% if detalhe.estado == 'R' %}
+                        Realizado
+                        {% endif %}
+                    </td>
+                    <td colspan="1" style="background-color: white; text-align: center; padding: 18px; width:150px;">
+                        <a href="{% url 'care_grupos' detalhe.id %} ">
+                            <input type="button" value="Presenças" -->
+                        </a>
+                    </td>
+                    <td colspan="1" style="background-color: white; text-align: center; padding: 18px; ">
+                        <a href="{% url 'care_grupos' detalhe.id %} ">
+                            <input type="button" value="Detalhes" -->
+                        </a>
+                    </td>
+                </tr>
+
+                <!-- <input type="button" value="Detalhes"-->
+                <!--                    </a>-->
+                {% endfor %}
+            </table>
+        </div>
+
+
     </div>
-<!--    olaaa-->
-<!--    {% for detalhe in sessoes %}-->
-<!--        {{ detalhe }}-->
-<!--    {% endfor %}-->
-<!--    adeus-->
-    <div class="tab1">
-        <table border="0" id="q4" ALIGN=center cellspacing="15" cellpadding="10" style="width:95%;">
-            <tr>
-                <th rowspan="1">Sessão</th>
-                <th rowspan="1">Nome</th>
-                <th rowspan="1">Data e hora</th>
-                <th rowspan="1">Regime</th>
-                <th colspan="1">Estado</th>
-                <th colspan="1">Presenças</th>
-                <th colspan="1">Detalhes</th>
-
-            </tr>
-            {% for detalhe in sessoes %}
-            <tr>
-                <td colspan="1" style="background-color: white; text-align: center; width:250px;">
-                    Sessão {{ detalhe.numeroSessao }}
-                </td>
-                <td colspan="1" style="background-color: white; text-align: center; padding: 10px;width:355px">
-                    {{ detalhe.id }}
-                </td>
-                <td colspan="1" style="background-color: white; text-align: center;padding: 18px;width:355px ">
-                    {{ detalhe.data }}
-                </td>
-                <td colspan="1" style="background-color: white; text-align: center; padding: 18px; ">
-
-                    {% if detalhe.regime == 'P' %}
-                    Presencial
-                    {% endif %}
-                    {% if detalhe.regime == 'O' %}
-                    Online
-                    {% endif %}
-                    {% if detalhe.regime == 'M' %}
-                    Misto
-                    {% endif %}
-
-                </td>
-                <td colspan="1" style="background-color: white; text-align: center; padding: 18px;width:150px; ">
-                    {% if detalhe.estado == 'PR' %}
-                    Por realizar
-                    {% endif %}
-                    {% if detalhe.estado == 'R' %}
-                    Realizado
-                    {% endif %}
-                </td>
-                <td colspan="1" style="background-color: white; text-align: center; padding: 18px; width:150px;">
-                     <a href="{% url 'care_grupos' detalhe.numeroSessao %}" >
-                    <input type="button" value="Presenças" -->
-                  </a>
-                </td>
-                <td colspan="1" style="background-color: white; text-align: center; padding: 18px; ">
-                    <button class="botaoDetalhes" > Detalhes</button>
-
-                </td>
-            </tr>
-<!--<a href="{% url 'care_grupos' %}" >-->
-<!-- <input type="button" value="Detalhes"-->
-<!--                    </a>-->
-            {% endfor %}
-        </table>
-    </div>
-
-
-
 </main>
 
 </body>

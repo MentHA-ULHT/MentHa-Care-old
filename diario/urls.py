@@ -2,7 +2,7 @@ from diario import views
 from django.urls import path
 
 urlpatterns = [
-    path('care_grupos', views.view_care_grupos, name='care_grupos'),
+    path('care_grupos/<int:id>', views.view_care_grupos, name='care_grupos'),
     path('cog_grupos', views.view_cog_grupos, name='cog_grupos'),
     path('avalia_grupos', views.view_avalia_grupos, name='avalia_grupos'),
     path('participantes', views.view_participantes, name='participantes'),

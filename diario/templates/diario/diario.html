@@ -444,6 +444,7 @@ function hideContent(element){
         }
 
 
+
 </script>
 {% endblock %}
 
@@ -451,7 +452,7 @@ function hideContent(element){
 <body>
 <main>
 
-</div>
+    </div>
     <div id="esq">
         <div class="detail-info-containers" id="information-container" onmouseout="hideContent(this)"
              onmouseover="showContent(this)">
@@ -508,168 +509,168 @@ function hideContent(element){
             <!-- rowspan (coluna) or    colspan (linha)        -->
 
 
-<!--            <table border="1" id="q5" style="width:100%; padding: 15px">-->
-<!--                &lt;!&ndash;    sessao&ndash;&gt;-->
-<!--                {% for detalhe in sessao %}-->
-<!--                <tr>-->
-<!--                    {% if detalhe.nome|length > 0 %}-->
-<!--                    <td colspan="8" style="background-color: gray; text-align: center;  padding: 10px;"> {{ detalhe.nome-->
-<!--                        }}-->
-<!--                    </td>-->
-<!--                    {% endif %}-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Tema</td>-->
-<!--                    {% if detalhe.tema|length > 0 %}-->
-<!--                    <td colspan="7" style="background-color: white; text-align: left;  padding: 10px;"> {{ detalhe.tema-->
-<!--                        }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="7" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %}-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Dinamizadores-->
-<!--                    </th>-->
-<!--                    {% if detalhe.dinamizadores|length > 0 %}-->
-<!--                    <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{-->
-<!--                        detalhe.dinamizadores }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="7" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %}-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Componentes-->
-<!--                    </th>-->
-<!--                    {% if detalhe.componentes|length > 0 %}-->
-<!--                    <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{-->
-<!--                        detalhe.componentes }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="7" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %}-->
-<!--                </tr>-->
-<!--                {% endfor %}-->
-<!--                &lt;!&ndash;    seccao objetivos e restante info da sessao&ndash;&gt;-->
-<!--                <tr>-->
-<!--                    <td colspan="1" style="background-color: white; width:250px;"></td>-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">Objetivo(s)-->
-<!--                    </td>-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">Atividade(s)-->
-<!--                    </td>-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">Materiais</td>-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; ">Duração</td>-->
-<!--                </tr>-->
-<!--                &lt;!&ndash;    exercicio &ndash;&gt;-->
-<!--                &lt;!&ndash;    parte inicial&ndash;&gt;-->
-<!--                {% for detalhe in exercicios %}-->
-<!--                {% if detalhe.fase == 'I' %}-->
-<!--                <tr>-->
+            <!--            <table border="1" id="q5" style="width:100%; padding: 15px">-->
+            <!--                &lt;!&ndash;    sessao&ndash;&gt;-->
+            <!--                {% for detalhe in sessao %}-->
+            <!--                <tr>-->
+            <!--                    {% if detalhe.nome|length > 0 %}-->
+            <!--                    <td colspan="8" style="background-color: gray; text-align: center;  padding: 10px;"> {{ detalhe.nome-->
+            <!--                        }}-->
+            <!--                    </td>-->
+            <!--                    {% endif %}-->
+            <!--                </tr>-->
+            <!--                <tr>-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Tema</td>-->
+            <!--                    {% if detalhe.tema|length > 0 %}-->
+            <!--                    <td colspan="7" style="background-color: white; text-align: left;  padding: 10px;"> {{ detalhe.tema-->
+            <!--                        }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="7" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %}-->
+            <!--                </tr>-->
+            <!--                <tr>-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Dinamizadores-->
+            <!--                    </th>-->
+            <!--                    {% if detalhe.dinamizadores|length > 0 %}-->
+            <!--                    <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{-->
+            <!--                        detalhe.dinamizadores }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="7" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %}-->
+            <!--                </tr>-->
+            <!--                <tr>-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px;">Componentes-->
+            <!--                    </th>-->
+            <!--                    {% if detalhe.componentes|length > 0 %}-->
+            <!--                    <td colspan="7" style="background-color: white; text-align: left; padding: 10px; "> {{-->
+            <!--                        detalhe.componentes }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="7" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %}-->
+            <!--                </tr>-->
+            <!--                {% endfor %}-->
+            <!--                &lt;!&ndash;    seccao objetivos e restante info da sessao&ndash;&gt;-->
+            <!--                <tr>-->
+            <!--                    <td colspan="1" style="background-color: white; width:250px;"></td>-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">Objetivo(s)-->
+            <!--                    </td>-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">Atividade(s)-->
+            <!--                    </td>-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">Materiais</td>-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; ">Duração</td>-->
+            <!--                </tr>-->
+            <!--                &lt;!&ndash;    exercicio &ndash;&gt;-->
+            <!--                &lt;!&ndash;    parte inicial&ndash;&gt;-->
+            <!--                {% for detalhe in exercicios %}-->
+            <!--                {% if detalhe.fase == 'I' %}-->
+            <!--                <tr>-->
 
-<!--                    <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Inicial</td>-->
-<!--                    {% if detalhe.objetivo|length > 0 %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.objetivo }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %} {% if detalhe.atividade|length > 0 %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.atividade }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %} {% if detalhe.materiais|length > 0 %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.materiais }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %}-->
-<!--                    {% if detalhe.duracao|length > 0 %}-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.duracao }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %}-->
-<!--                </tr>-->
-<!--                {% endif %}-->
-<!--                &lt;!&ndash;    parte desenvolvimento&ndash;&gt;-->
-<!--                {% endfor %}-->
-<!--                {% for detalhe in exercicios %}-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Inicial</td>-->
+            <!--                    {% if detalhe.objetivo|length > 0 %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.objetivo }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %} {% if detalhe.atividade|length > 0 %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.atividade }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %} {% if detalhe.materiais|length > 0 %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.materiais }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %}-->
+            <!--                    {% if detalhe.duracao|length > 0 %}-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.duracao }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %}-->
+            <!--                </tr>-->
+            <!--                {% endif %}-->
+            <!--                &lt;!&ndash;    parte desenvolvimento&ndash;&gt;-->
+            <!--                {% endfor %}-->
+            <!--                {% for detalhe in exercicios %}-->
 
-<!--                {% if detalhe.fase == 'D' %}-->
-<!--                <tr>-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase-->
-<!--                        Desenvolvimento-->
-<!--                    </td>-->
-<!--                    {% if detalhe.objetivo|length > 0 %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.objetivo }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %} {% if detalhe.atividade|length > 0 %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.atividade }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %} {% if detalhe.materiais|length > 0 %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.materiais }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %}-->
-<!--                    {% if detalhe.duracao|length > 0 %}-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.duracao }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %}-->
-<!--                </tr>-->
-<!--                {% endif %}-->
-<!--                {% endfor %}-->
-<!--                &lt;!&ndash;    parte final&ndash;&gt;-->
-<!--                {% for detalhe in exercicios %}-->
-<!--                {% if detalhe.fase == 'F' %}-->
-<!--                <tr>-->
+            <!--                {% if detalhe.fase == 'D' %}-->
+            <!--                <tr>-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase-->
+            <!--                        Desenvolvimento-->
+            <!--                    </td>-->
+            <!--                    {% if detalhe.objetivo|length > 0 %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.objetivo }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %} {% if detalhe.atividade|length > 0 %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.atividade }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %} {% if detalhe.materiais|length > 0 %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.materiais }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %}-->
+            <!--                    {% if detalhe.duracao|length > 0 %}-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.duracao }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %}-->
+            <!--                </tr>-->
+            <!--                {% endif %}-->
+            <!--                {% endfor %}-->
+            <!--                &lt;!&ndash;    parte final&ndash;&gt;-->
+            <!--                {% for detalhe in exercicios %}-->
+            <!--                {% if detalhe.fase == 'F' %}-->
+            <!--                <tr>-->
 
-<!--                    <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Final</td>-->
-<!--                    {% if detalhe.objetivo|length > 0 %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.objetivo }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %} {% if detalhe.atividade|length > 0 %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.atividade }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %} {% if detalhe.materiais|length > 0 %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.materiais }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %}-->
-<!--                    {% if detalhe.duracao|length > 0 %}-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; ">{{-->
-<!--                        detalhe.duracao }}-->
-<!--                    </td>-->
-<!--                    {% else %}-->
-<!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; "></td>-->
-<!--                    {% endif %}-->
-<!--                </tr>-->
-<!--                {% endif %}-->
-<!--                {% endfor %}-->
-<!--            </table>-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; width:250px;"> Fase Final</td>-->
+            <!--                    {% if detalhe.objetivo|length > 0 %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.objetivo }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %} {% if detalhe.atividade|length > 0 %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.atividade }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %} {% if detalhe.materiais|length > 0 %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.materiais }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="2" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %}-->
+            <!--                    {% if detalhe.duracao|length > 0 %}-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; ">{{-->
+            <!--                        detalhe.duracao }}-->
+            <!--                    </td>-->
+            <!--                    {% else %}-->
+            <!--                    <td colspan="1" style="background-color: white; text-align: center; padding: 10px; "></td>-->
+            <!--                    {% endif %}-->
+            <!--                </tr>-->
+            <!--                {% endif %}-->
+            <!--                {% endfor %}-->
+            <!--            </table>-->
         </div>
     </div>
 
@@ -701,7 +702,9 @@ function hideContent(element){
 </main>
 <footer>
     Painel de sessão
-    <a href="{% url 'care_grupos' %}">
+    {% for detalhe in sessao %}
+
+    <a href="{% url 'care_grupos' detalhe.id %}">
         <div style="
         margin-left: auto;
         margin-right: auto;
@@ -716,6 +719,8 @@ function hideContent(element){
         float:center">
         </div>
     </a>
+    {% endfor %}
+
 
 </footer>
 

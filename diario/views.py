@@ -11,18 +11,18 @@ def view_menu_esquerda(request):
     return render(request,"diario/menu_esquerda.html",context)
 
 # Create your views here.
-def view_care_grupos(request):
+def view_care_grupos(request,id):
     group_id = 1
     grupo = GrupoCog.objects.get(id=group_id)
 
-    sessao_id = 1
+    sessao_id = id
     sessao = Sessao.objects.get(id=sessao_id)
 
 
 
     contexto = {'grupos': GrupoCare.objects.all(),
                 'exercicios': sessao.exercicios.all(),
-                'sessao': Sessao.objects.filter(id=sessao_id)
+                'sessao': Sessao.objects.filter(id=id)
 
                 }
     return render(request, "diario/care_grupos.html", contexto)
